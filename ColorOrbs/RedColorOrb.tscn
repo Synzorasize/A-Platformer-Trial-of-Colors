@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ColorOrbs/OrbHitbox.tres" type="Shape2D" id=1]
+[ext_resource path="res://ColorOrbs/RedColorOrb1.png" type="Texture" id=2]
+[ext_resource path="res://ColorOrbs/RedColorOrb2.png" type="Texture" id=3]
+[ext_resource path="res://ColorOrbs/OrbOff.png" type="Texture" id=4]
+[ext_resource path="res://ColorOrbs/RedColorOrb.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "OrbOn",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "OrbOff",
+"speed": 5.0
+} ]
+
+[node name="RedColorOrb" type="Area2D" groups=[
+"Orbs",
+]]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 1 )
+animation = "OrbOn"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -5 )
+scale = Vector2( 0.99, 0.99 )
+shape = ExtResource( 1 )
+[connection signal="body_shape_entered" from="." to="." method="_on_RedColorOrb_body_shape_entered"]

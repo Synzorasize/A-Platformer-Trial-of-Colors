@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tilecostumes/Tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tilecostumes/Redtile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ExitSprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level1.gd" type="Script" id=5]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=6]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 224 )
+
+[node name="Tile" parent="." instance=ExtResource( 2 )]
+position = Vector2( 144, 304 )
+
+[node name="Tile2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 176, 304 )
+
+[node name="Tile3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 208, 304 )
+
+[node name="Tile4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 240, 304 )
+
+[node name="Tile5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 272, 304 )
+
+[node name="Tile6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 304, 304 )
+
+[node name="Tile7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 336, 304 )
+
+[node name="Tile8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 368, 304 )
+
+[node name="Tile9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 398.226, 304 )
+
+[node name="Tile10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 430.226, 304 )
+
+[node name="Tile11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 462.226, 304 )
+
+[node name="Tile12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 494.226, 304 )
+
+[node name="Tile13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 526.226, 304 )
+
+[node name="Tile14" parent="." instance=ExtResource( 2 )]
+position = Vector2( 558.226, 304 )
+
+[node name="Tile15" parent="." instance=ExtResource( 2 )]
+position = Vector2( 590.226, 304 )
+
+[node name="Tile16" parent="." instance=ExtResource( 2 )]
+position = Vector2( 622.226, 304 )
+
+[node name="Redtile" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 272 )
+
+[node name="Redtile2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 240 )
+
+[node name="Redtile3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 208 )
+
+[node name="Redtile4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 178 )
+
+[node name="ExitSprite" parent="." instance=ExtResource( 4 )]
+position = Vector2( 616, 255 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
+[connection signal="restart" from="Player" to="." method="_on_Player_restart"]
+[connection signal="body_entered" from="ExitSprite" to="Player" method="_on_ExitSprite_body_entered"]
+[connection signal="body_entered" from="ExitSprite" to="CanvasLayer/UI" method="_on_ExitSprite_body_entered"]

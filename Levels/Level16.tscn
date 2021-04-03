@@ -1,0 +1,464 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Tilecostumes/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level16.gd" type="Script" id=4]
+[ext_resource path="res://Tilecostumes/Bluetile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Switches/RedSwitch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Switches/GreenSwitch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ExitSprite.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Teleporters/BlueTeleporter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Teleporters/TeleportTimer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Teleporters/RedTeleporter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Switches/BlueSwitch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Tilecostumes/Redtile.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Teleporters/GreenTeleporter.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Tilecostumes/Greentile.tscn" type="PackedScene" id=15]
+
+[node name="Level16" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Tile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, -48 )
+
+[node name="Tile8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, -80 )
+
+[node name="Tile7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, -80 )
+
+[node name="Tile9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, -80 )
+
+[node name="Tile10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, -80 )
+
+[node name="Tile11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, -80 )
+
+[node name="Tile12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, -80 )
+
+[node name="Tile17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, -80 )
+
+[node name="Tile18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 192, -80 )
+
+[node name="Tile19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, -80 )
+
+[node name="Tile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 16 )
+
+[node name="Tile25" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, -16 )
+
+[node name="Tile26" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, -16 )
+
+[node name="Tile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 48 )
+
+[node name="Tile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 48 )
+
+[node name="Tile5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 48 )
+
+[node name="Tile6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 48 )
+
+[node name="Tile20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 48.0001 )
+
+[node name="Tile21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 80 )
+
+[node name="Tile22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 48.0001 )
+
+[node name="Tile24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 80 )
+
+[node name="Tile23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 48 )
+
+[node name="Tile49" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 432 )
+
+[node name="Tile50" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 432 )
+
+[node name="Tile51" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 432 )
+
+[node name="Tile52" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 432 )
+
+[node name="Tile53" parent="." instance=ExtResource( 1 )]
+position = Vector2( 192, 432 )
+
+[node name="Tile54" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 432 )
+
+[node name="Tile55" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 432 )
+
+[node name="Tile13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, -48 )
+
+[node name="Tile14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, -80 )
+
+[node name="Tile15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 16 )
+
+[node name="Tile16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 48 )
+
+[node name="Tile27" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 176 )
+
+[node name="Tile28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 272 )
+
+[node name="Tile29" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 144 )
+
+[node name="Tile30" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 112 )
+
+[node name="Tile31" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 208 )
+
+[node name="Tile32" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 240 )
+
+[node name="Tile39" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 336 )
+
+[node name="Tile40" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 432 )
+
+[node name="Tile56" parent="." instance=ExtResource( 1 )]
+position = Vector2( 576, 432 )
+
+[node name="Tile57" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 432 )
+
+[node name="Tile58" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 432 )
+
+[node name="Tile59" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 432 )
+
+[node name="Tile64" parent="." instance=ExtResource( 1 )]
+position = Vector2( 640, 432 )
+
+[node name="Tile65" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 432 )
+
+[node name="Tile60" parent="." instance=ExtResource( 1 )]
+position = Vector2( 448, 432 )
+
+[node name="Tile61" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 432 )
+
+[node name="Tile62" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 432 )
+
+[node name="Tile63" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 432 )
+
+[node name="Tile41" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 304 )
+
+[node name="Tile42" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 368 )
+
+[node name="Tile43" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 400 )
+
+[node name="Tile44" parent="." instance=ExtResource( 1 )]
+position = Vector2( 704, 336 )
+
+[node name="Tile79" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 672, 320 )
+
+[node name="Tile80" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 640, 320 )
+
+[node name="Tile81" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 608, 320 )
+
+[node name="Tile82" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 576, 320 )
+
+[node name="Tile83" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 544, 320 )
+
+[node name="Tile84" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 512, 320 )
+
+[node name="Tile85" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 480, 320 )
+
+[node name="Tile86" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 480, 352 )
+
+[node name="Tile87" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 480, 384 )
+
+[node name="Tile88" parent="." groups=[
+"switch10",
+] instance=ExtResource( 1 )]
+position = Vector2( 480, 408 )
+
+[node name="Tile45" parent="." instance=ExtResource( 1 )]
+position = Vector2( 704, 432 )
+
+[node name="Tile46" parent="." instance=ExtResource( 1 )]
+position = Vector2( 704, 304 )
+
+[node name="Tile69" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 160 )
+
+[node name="Tile70" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 160 )
+
+[node name="Tile71" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 160 )
+
+[node name="Tile72" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 160 )
+
+[node name="Tile73" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 160 )
+
+[node name="Tile74" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 160 )
+
+[node name="Tile66" parent="." groups=[
+"switch4",
+] instance=ExtResource( 1 )]
+position = Vector2( 384, 336 )
+
+[node name="Tile67" parent="." groups=[
+"switch",
+] instance=ExtResource( 1 )]
+position = Vector2( 304, 256 )
+
+[node name="Tile68" parent="." groups=[
+"switch",
+] instance=ExtResource( 1 )]
+position = Vector2( 592, 208 )
+
+[node name="Tile75" parent="." groups=[
+"switch5",
+] instance=ExtResource( 1 )]
+position = Vector2( 488, 64 )
+
+[node name="Tile76" parent="." groups=[
+"switch5",
+] instance=ExtResource( 1 )]
+position = Vector2( 984, -16 )
+
+[node name="Tile77" parent="." groups=[
+"switch5",
+] instance=ExtResource( 1 )]
+position = Vector2( 776, -16 )
+
+[node name="Tile78" parent="." groups=[
+"switch5",
+] instance=ExtResource( 1 )]
+position = Vector2( 656, 64 )
+
+[node name="Tile47" parent="." instance=ExtResource( 1 )]
+position = Vector2( 704, 368 )
+
+[node name="Tile48" parent="." instance=ExtResource( 1 )]
+position = Vector2( 704, 400 )
+
+[node name="Tile33" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 176 )
+
+[node name="Tile34" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 272 )
+
+[node name="Tile35" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 144 )
+
+[node name="Tile36" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 112 )
+
+[node name="Tile37" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 208 )
+
+[node name="Tile38" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 240 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 16 )
+
+[node name="ExitSprite" parent="." groups=[
+"switch10",
+] instance=ExtResource( 8 )]
+position = Vector2( 1200, 96 )
+
+[node name="RedSwitch" parent="." groups=[
+"switch3",
+] instance=ExtResource( 6 )]
+position = Vector2( 296, 16 )
+
+[node name="RedSwitch2" parent="." groups=[
+"switch3on",
+] instance=ExtResource( 6 )]
+position = Vector2( 256, 16 )
+
+[node name="RedSwitch3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 336, 16 )
+
+[node name="Bluetile" parent="." groups=[
+"switch2",
+] instance=ExtResource( 5 )]
+position = Vector2( 160, 48 )
+
+[node name="Bluetile2" parent="." groups=[
+"switch2",
+] instance=ExtResource( 5 )]
+position = Vector2( 192, 48 )
+
+[node name="GreenSwitch" parent="." instance=ExtResource( 7 )]
+position = Vector2( 224, 400 )
+
+[node name="GreenSwitch2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 272, 400 )
+
+[node name="GreenSwitch3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320, 400 )
+
+[node name="BlueTeleporter" parent="." instance=ExtResource( 9 )]
+position = Vector2( 648, 380 )
+
+[node name="BlueTeleporter2" parent="." groups=[
+"switch",
+] instance=ExtResource( 9 )]
+position = Vector2( 304, 204 )
+
+[node name="RedTeleporter" parent="." instance=ExtResource( 11 )]
+position = Vector2( 704, 252 )
+
+[node name="TeleportTimer" parent="." instance=ExtResource( 10 )]
+
+[node name="BlueSwitch" parent="." instance=ExtResource( 12 )]
+position = Vector2( 400, 128 )
+
+[node name="BlueSwitch4" parent="." groups=[
+"switch9",
+] instance=ExtResource( 12 )]
+position = Vector2( 984, -48 )
+
+[node name="BlueSwitch2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 336, 128 )
+
+[node name="BlueSwitch3" parent="." groups=[
+"switch7",
+] instance=ExtResource( 12 )]
+position = Vector2( 272, 128 )
+
+[node name="Redtile" parent="." groups=[
+"switch6",
+] instance=ExtResource( 13 )]
+position = Vector2( 488, 32 )
+
+[node name="GreenTeleporter" parent="." groups=[
+"switch10",
+"switch11",
+] instance=ExtResource( 14 )]
+position = Vector2( 544, 380 )
+
+[node name="GreenTeleporter2" parent="." groups=[
+"switch10",
+] instance=ExtResource( 14 )]
+position = Vector2( 1200, 0 )
+
+[node name="GreenTeleporter3" parent="." groups=[
+"nonGroup",
+"switch10",
+] instance=ExtResource( 14 )]
+position = Vector2( 376, -40 )
+
+[node name="Greentile" parent="." groups=[
+"switch10",
+] instance=ExtResource( 15 )]
+position = Vector2( 1200, 48 )
+
+[node name="Greentile2" parent="." groups=[
+"switch10",
+] instance=ExtResource( 15 )]
+position = Vector2( 1168, 80 )
+
+[node name="Greentile3" parent="." groups=[
+"switch10",
+] instance=ExtResource( 15 )]
+position = Vector2( 1168, 112 )
+
+[node name="Greentile4" parent="." groups=[
+"switch10",
+] instance=ExtResource( 15 )]
+position = Vector2( 1232, 80 )
+
+[node name="Greentile5" parent="." groups=[
+"switch10",
+] instance=ExtResource( 15 )]
+position = Vector2( 1232, 112 )
+[connection signal="restart" from="Player" to="." method="_on_Player_restart"]
+[connection signal="body_entered" from="ExitSprite" to="Player" method="_on_ExitSprite_body_entered"]
+[connection signal="body_entered" from="ExitSprite" to="CanvasLayer/UI" method="_on_ExitSprite_body_entered"]
+[connection signal="switchoff" from="RedSwitch" to="." method="_on_Switch1_switchoff"]
+[connection signal="switchon" from="RedSwitch" to="." method="_on_Switch1_switchon"]
+[connection signal="switchoff" from="RedSwitch2" to="." method="_on_Switch2_switchoff"]
+[connection signal="switchon" from="RedSwitch2" to="." method="_on_Switch2_switchon"]
+[connection signal="switchoff" from="RedSwitch3" to="." method="_on_Switch3_switchoff"]
+[connection signal="switchon" from="RedSwitch3" to="." method="_on_Switch3_switchon"]
+[connection signal="switchoff" from="GreenSwitch" to="." method="_on_Switch_switchoff"]
+[connection signal="switchon" from="GreenSwitch" to="." method="_on_Switch_switchon"]
+[connection signal="switchoff" from="GreenSwitch2" to="." method="_on_Switch0_switchoff"]
+[connection signal="switchon" from="GreenSwitch2" to="." method="_on_Switch0_switchon"]
+[connection signal="switchoff" from="GreenSwitch3" to="." method="_on_Switch4_switchoff"]
+[connection signal="switchon" from="GreenSwitch3" to="." method="_on_Switch4_switchon"]
+[connection signal="teleportPlayer" from="BlueTeleporter" to="BlueTeleporter2" method="_on_Teleporter_teleportPlayer"]
+[connection signal="teleportPlayer" from="BlueTeleporter2" to="RedTeleporter" method="_on_Teleporter_teleportPlayer"]
+[connection signal="teleportPlayer" from="RedTeleporter" to="BlueTeleporter" method="_on_Teleporter_teleportPlayer"]
+[connection signal="switchoff" from="BlueSwitch" to="." method="_on_Switch5_switchoff"]
+[connection signal="switchon" from="BlueSwitch" to="." method="_on_Switch5_switchon"]
+[connection signal="switchon" from="BlueSwitch4" to="." method="_on_Switch9_switchon"]
+[connection signal="switchoff" from="BlueSwitch2" to="." method="_on_Switch6_switchoff"]
+[connection signal="switchon" from="BlueSwitch2" to="." method="_on_Switch6_switchon"]
+[connection signal="switchon" from="BlueSwitch3" to="." method="_on_Switch7_switchon"]
+[connection signal="teleportPlayer" from="GreenTeleporter" to="GreenTeleporter3" method="_on_Teleporter_teleportPlayer"]
+[connection signal="teleportPlayer" from="GreenTeleporter3" to="GreenTeleporter2" method="_on_Teleporter_teleportPlayer"]

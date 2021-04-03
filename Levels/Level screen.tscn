@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/Fonts/UI_huge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Art/Fonts/UI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Levels/Level screen.gd" type="Script" id=3]
+[ext_resource path="res://Art/Buttons/ButtonHover_Pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://Art/Buttons/ButtonNormal.tres" type="StyleBox" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Level screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.356
+margin_bottom = -0.199997
+size_flags_horizontal = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+margin_top = 47.0
+margin_right = 768.0
+margin_bottom = 113.0
+size_flags_horizontal = 15
+custom_fonts/font = ExtResource( 1 )
+text = "Level Select"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 104.0
+margin_top = 160.0
+margin_right = -96.0
+margin_bottom = -69.9999
+size_flags_horizontal = 0
+size_flags_vertical = 0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level1" type="Button" parent="GridContainer"]
+margin_right = 113.0
+margin_bottom = 46.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.356
+margin_top = 384.0
+margin_bottom = 287.8
+size_flags_horizontal = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="HBoxContainer2"]
+margin_left = 339.0
+margin_top = 9.0
+margin_right = 429.0
+margin_bottom = 55.0
+grow_horizontal = 0
+rect_min_size = Vector2( 90, 0 )
+size_flags_horizontal = 6
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+[connection signal="pressed" from="GridContainer/Level1" to="." method="_on_LevelButton_pressed"]
+[connection signal="pressed" from="HBoxContainer2/BackButton" to="." method="_on_BackButton_pressed"]

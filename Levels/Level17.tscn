@@ -1,0 +1,218 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Tilecostumes/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level17.gd" type="Script" id=4]
+[ext_resource path="res://Tilecostumes/Bluetile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Switches/RedSwitch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ColorOrbs/GreenColorOrb.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ExitSprite.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Tilecostumes/Greentile.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Switches/GreenSwitch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Tilecostumes/Redtile.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ColorOrbs/BlueColorOrb.tscn" type="PackedScene" id=12]
+
+[node name="Level17" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Tile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 368 )
+
+[node name="Tile11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 528, 144 )
+
+[node name="Tile13" parent="." groups=[
+"switch1",
+] instance=ExtResource( 1 )]
+position = Vector2( 624, 48 )
+
+[node name="Tile15" parent="." groups=[
+"switch1",
+] instance=ExtResource( 1 )]
+position = Vector2( 432, 0 )
+
+[node name="Tile16" parent="." groups=[
+"switch1",
+] instance=ExtResource( 1 )]
+position = Vector2( 336, 0 )
+
+[node name="Tile17" parent="." groups=[
+"switch1",
+] instance=ExtResource( 1 )]
+position = Vector2( 368, 0 )
+
+[node name="Tile18" parent="." groups=[
+"switch1",
+] instance=ExtResource( 1 )]
+position = Vector2( 400, 0 )
+
+[node name="Tile14" parent="." groups=[
+"switch1",
+] instance=ExtResource( 1 )]
+position = Vector2( 144, 48 )
+
+[node name="Tile12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, 144 )
+
+[node name="Tile7" parent="." groups=[
+"switch",
+] instance=ExtResource( 1 )]
+position = Vector2( 272, 392 )
+
+[node name="Tile9" parent="." groups=[
+"switch",
+] instance=ExtResource( 1 )]
+position = Vector2( 240, 296 )
+
+[node name="Tile19" parent="." groups=[
+"switch2",
+] instance=ExtResource( 1 )]
+position = Vector2( 208, 224 )
+
+[node name="Tile20" parent="." groups=[
+"switch2",
+] instance=ExtResource( 1 )]
+position = Vector2( 568, 224 )
+
+[node name="Tile10" parent="." groups=[
+"switch",
+] instance=ExtResource( 1 )]
+position = Vector2( 528, 296 )
+
+[node name="Tile8" parent="." groups=[
+"switch",
+] instance=ExtResource( 1 )]
+position = Vector2( 496, 392 )
+
+[node name="Tile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 303 )
+
+[node name="Tile5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 303 )
+
+[node name="Tile6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 303 )
+
+[node name="Tile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 368 )
+
+[node name="Tile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 368 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 336 )
+
+[node name="ExitSprite" parent="." instance=ExtResource( 8 )]
+position = Vector2( 384, 255 )
+
+[node name="Bluetile" parent="." instance=ExtResource( 5 )]
+position = Vector2( 352, 271 )
+
+[node name="Bluetile2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 416, 271 )
+
+[node name="Bluetile3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 416, 239 )
+
+[node name="Bluetile4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 384, 207 )
+
+[node name="Bluetile5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 352, 239 )
+
+[node name="RedSwitch" parent="." instance=ExtResource( 6 )]
+position = Vector2( 352, 400 )
+
+[node name="RedSwitch2" parent="." groups=[
+"switch1",
+] instance=ExtResource( 6 )]
+position = Vector2( 384, 176 )
+
+[node name="GreenColorOrb" parent="." instance=ExtResource( 7 )]
+position = Vector2( 384, 155 )
+
+[node name="Greentile" parent="." instance=ExtResource( 9 )]
+position = Vector2( 272, 112 )
+
+[node name="Greentile2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 272, 80 )
+
+[node name="Greentile3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 496, 112 )
+
+[node name="Greentile4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 496, 80 )
+
+[node name="GreenSwitch" parent="." instance=ExtResource( 10 )]
+position = Vector2( 240, 112 )
+
+[node name="GreenSwitch2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 528, 112 )
+
+[node name="Redtile" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 336, -32 )
+
+[node name="Redtile2" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 336, -64 )
+
+[node name="Redtile3" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 336, -96 )
+
+[node name="Redtile4" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 368, -96 )
+
+[node name="Redtile5" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 400, -96 )
+
+[node name="Redtile6" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 432, -96 )
+
+[node name="Redtile7" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 432, -64 )
+
+[node name="Redtile8" parent="." groups=[
+"switch1",
+"switch2off",
+] instance=ExtResource( 11 )]
+position = Vector2( 432, -32 )
+
+[node name="BlueColorOrb" parent="." groups=[
+"switch1",
+] instance=ExtResource( 12 )]
+position = Vector2( 384, -52 )
+[connection signal="restart" from="Player" to="." method="_on_Player_restart"]
+[connection signal="body_entered" from="ExitSprite" to="Player" method="_on_ExitSprite_body_entered"]
+[connection signal="body_entered" from="ExitSprite" to="CanvasLayer/UI" method="_on_ExitSprite_body_entered"]
+[connection signal="switchoff" from="RedSwitch" to="." method="_on_Switch_switchoff"]
+[connection signal="switchon" from="RedSwitch" to="." method="_on_Switch_switchon"]
+[connection signal="switchoff" from="RedSwitch2" to="." method="_on_Switch2_switchoff"]
+[connection signal="switchon" from="RedSwitch2" to="." method="_on_Switch2_switchon"]
+[connection signal="switchon" from="GreenSwitch" to="." method="_on_Switch0_switchon"]
+[connection signal="switchoff" from="GreenSwitch2" to="." method="_on_Switch1_switchoff"]
+[connection signal="switchon" from="GreenSwitch2" to="." method="_on_Switch1_switchon"]
