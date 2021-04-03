@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Levels/Level4.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tilecostumes/Tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tilecostumes/Bluetile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Tilecostumes/Redtile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ExitSprite.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Teleporters/BlueTeleporter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ColorOrbs/RedColorOrb.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/BlueHazard.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/RedHazard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Teleporters/TeleportTimer.tscn" type="PackedScene" id=12]
+
+[node name="Level4" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 384, 288 )
+
+[node name="Tile" parent="." instance=ExtResource( 4 )]
+position = Vector2( 384, 320 )
+
+[node name="Tile3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 352, 320 )
+
+[node name="Tile4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 416, 320 )
+
+[node name="Tile5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 288, 320 )
+
+[node name="Tile6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 320 )
+
+[node name="Tile27" parent="." instance=ExtResource( 4 )]
+position = Vector2( 224, 320 )
+
+[node name="Tile7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 320, 320 )
+
+[node name="Tile8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 320, 255 )
+
+[node name="Tile9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 288, 255 )
+
+[node name="Tile10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 351, 255 )
+
+[node name="Tile11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 448, 255 )
+
+[node name="Tile12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 416, 255 )
+
+[node name="Tile13" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 255 )
+
+[node name="Tile17" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 224 )
+
+[node name="Tile18" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 192 )
+
+[node name="Tile19" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 160 )
+
+[node name="Tile20" parent="." instance=ExtResource( 4 )]
+position = Vector2( 288, 224 )
+
+[node name="Tile21" parent="." instance=ExtResource( 4 )]
+position = Vector2( 288, 192 )
+
+[node name="Tile22" parent="." instance=ExtResource( 4 )]
+position = Vector2( 288, 160 )
+
+[node name="Tile14" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 320 )
+
+[node name="Tile15" parent="." instance=ExtResource( 4 )]
+position = Vector2( 448, 320 )
+
+[node name="Tile16" parent="." instance=ExtResource( 4 )]
+position = Vector2( 512, 320 )
+
+[node name="Tile23" parent="." instance=ExtResource( 4 )]
+position = Vector2( 544, 320 )
+
+[node name="Tile24" parent="." instance=ExtResource( 4 )]
+position = Vector2( 160, 320 )
+
+[node name="Tile25" parent="." instance=ExtResource( 4 )]
+position = Vector2( 576, 320 )
+
+[node name="Tile26" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, 320 )
+
+[node name="Redtile" parent="." instance=ExtResource( 6 )]
+position = Vector2( 352, 288 )
+
+[node name="Redtile2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 384, 255 )
+
+[node name="Bluetile" parent="." instance=ExtResource( 5 )]
+position = Vector2( 416, 288 )
+
+[node name="Bluetile2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 64, 320 )
+
+[node name="ExitSprite" parent="." instance=ExtResource( 7 )]
+position = Vector2( 384, 208 )
+
+[node name="BlueTeleporter" parent="." instance=ExtResource( 8 )]
+position = Vector2( 544, 268 )
+
+[node name="BlueTeleporter2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 224, 268 )
+
+[node name="RedHazard" parent="." instance=ExtResource( 11 )]
+position = Vector2( 184, 288 )
+
+[node name="RedHazard2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 184, 256 )
+
+[node name="RedHazard3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 168, 232 )
+
+[node name="BlueHazard" parent="." instance=ExtResource( 10 )]
+position = Vector2( 152, 288 )
+
+[node name="BlueHazard2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 152, 256 )
+
+[node name="BlueHazard3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 168, 232 )
+rotation = 0.785398
+
+[node name="RedColorOrb" parent="." instance=ExtResource( 9 )]
+position = Vector2( 104, 296 )
+
+[node name="TeleportTimer" parent="." instance=ExtResource( 12 )]
+[connection signal="restart" from="Player" to="." method="_on_Player_restart"]
+[connection signal="body_entered" from="ExitSprite" to="Player" method="_on_ExitSprite_body_entered"]
+[connection signal="body_entered" from="ExitSprite" to="CanvasLayer/UI" method="_on_ExitSprite_body_entered"]
+[connection signal="teleportPlayer" from="BlueTeleporter" to="BlueTeleporter2" method="_on_Teleporter_teleportPlayer"]
+[connection signal="teleportPlayer" from="BlueTeleporter2" to="BlueTeleporter" method="_on_Teleporter_teleportPlayer"]
