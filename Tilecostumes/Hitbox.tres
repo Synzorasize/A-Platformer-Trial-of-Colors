@@ -1,0 +1,5 @@
+[gd_resource type="RectangleShape2D" format=2]
+
+[resource]
+resource_name = "Hitbox"
+extents = Vector2( 16, 16 )
