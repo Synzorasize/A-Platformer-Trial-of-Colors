@@ -88,6 +88,8 @@ func _process(_delta):
 		else:
 			current_selected.position = Vector2(stepify(m.x, 1),stepify(m.y, 1))
 #			level.data[h] = {"position": current_selected.position}
+		if Input.is_action_pressed("ui_cancel") and not current_selected == Player:
+			current_selected.queue_free()
 	else:
 		var m = level.get_local_mouse_position()
 		var x = level.get_children()
