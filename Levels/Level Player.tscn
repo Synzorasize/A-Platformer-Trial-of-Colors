@@ -244,6 +244,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SaveButton" type="Button" parent="Level Editor/Panel2"]
+margin_left = 32.0
+margin_top = 312.0
+margin_right = 128.0
+margin_bottom = 358.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton" type="Button" parent="Level Editor/Panel2"]
+margin_left = 32.0
+margin_top = 248.0
+margin_right = 128.0
+margin_bottom = 294.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CameraButton" type="Button" parent="Level Editor/Panel2"]
 margin_left = 16.0
 margin_top = 24.0
@@ -258,6 +290,24 @@ custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 toggle_mode = true
 text = "Camera"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RenameButton" type="Button" parent="Level Editor/Panel2"]
+margin_left = 16.0
+margin_top = 152.0
+margin_right = 144.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 128, 0 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+toggle_mode = true
+text = "Rename"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -279,6 +329,128 @@ text = "Player"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel3" type="Panel" parent="Level Editor"]
+visible = false
+margin_left = 296.0
+margin_top = 96.0
+margin_right = 472.0
+margin_bottom = 240.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Level Editor/Panel3"]
+margin_top = 32.0
+margin_right = 176.0
+margin_bottom = 78.0
+custom_styles/normal = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "CustomLevel"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton2" type="Button" parent="Level Editor/Panel3"]
+margin_left = 48.0
+margin_top = 88.0
+margin_right = 128.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="Level Editor/Panel3"]
+margin_left = 144.0
+margin_top = 8.0
+margin_right = 166.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel4" type="Panel" parent="Level Editor"]
+visible = false
+margin_left = 296.0
+margin_top = 96.0
+margin_right = 472.0
+margin_bottom = 240.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="Level Editor/Panel4"]
+margin_top = 32.0
+margin_right = 176.0
+margin_bottom = 78.0
+custom_styles/normal = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "CustomLevel"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RenameButton2" type="Button" parent="Level Editor/Panel4"]
+margin_left = 24.0
+margin_top = 88.0
+margin_right = 152.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Rename"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="Level Editor/Panel4"]
+margin_left = 144.0
+margin_top = 8.0
+margin_right = 166.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="gui_input" from="Level Editor" to="." method="_on_Level_Editor_gui_input"]
 [connection signal="pressed" from="Level Editor/Panel/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Level Editor/Panel/BlueButton" to="." method="_on_BlueButton_pressed"]
@@ -290,5 +462,12 @@ __meta__ = {
 [connection signal="pressed" from="Level Editor/Panel/HazardAdder" to="." method="_on_HazardAdder_pressed"]
 [connection signal="pressed" from="Level Editor/Panel/ExitAdder" to="." method="_on_ExitAdder_pressed"]
 [connection signal="pressed" from="Level Editor/Panel2/PlayButton" to="Level999" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Level Editor/Panel2/SaveButton" to="Level999" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Level Editor/Panel2/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="toggled" from="Level Editor/Panel2/CameraButton" to="Level999" method="_on_CameraButton_toggled"]
+[connection signal="pressed" from="Level Editor/Panel2/RenameButton" to="." method="_on_RenameButton_pressed"]
 [connection signal="pressed" from="Level Editor/Panel2/PlayerColorButton" to="." method="_on_PlayerColorButton_pressed"]
+[connection signal="pressed" from="Level Editor/Panel3/LoadButton2" to="." method="_on_LoadButton2_pressed"]
+[connection signal="pressed" from="Level Editor/Panel3/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="Level Editor/Panel4/RenameButton2" to="Level999" method="_on_RenameButton2_pressed"]
+[connection signal="pressed" from="Level Editor/Panel4/CancelButton" to="." method="_on_CancelButton_pressed"]

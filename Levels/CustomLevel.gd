@@ -1,22 +1,21 @@
 extends Node2D
 
 export (Dictionary) var data = {
-	"name": "CustomLevel",
+	"level_name": "CustomLevel",
 	"speedrun_time": null,
 	"player": {
 		"color": "red",
 		"position": Vector2(384,192),
 		"camera": false,
 	},
-	"tile": {
-		"position": Vector2(384,224),
-	},
+	"Tile": Vector2(384,224),
 }
 #var level : PackedScene = PackedScene.new()
 #var level_names = []
 onready var Player = $Player
 onready var Camera = $Player/Camera2D
 onready var UI = $CanvasLayer/UI
+var RenameLevelText
 var descendants = []
 #var export : bool = false
 #onready var FD = $"../FileDialog"
@@ -36,18 +35,22 @@ func restart():
 func _enter_tree():
 	GlobalVariables.LevelNum = 999
 func _ready():
-	if GlobalVariables.editor_playing == true and GlobalVariables.editor == false:
+	Camera.current = false
+	if GlobalVariables.editor_playing and not GlobalVariables.editor:
 		Player.color = data.player.color
 		if not get_node_or_null("ExitSprite") == null:
 			get_node("ExitSprite").connect("body_entered", Player, "_on_ExitSprite_body_entered")
 			get_node("ExitSprite").connect("body_entered", UI, "_on_ExitSprite_body_entered")
-		if data.player.camera == true:
+		if data.player.camera:
 			Camera.current = true
+	else:
+		RenameLevelText = $"../Level Editor/Panel4/LineEdit2"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func saveLevel():
+	position = Vector2(0,0)
 	descendants.clear()
 	descendants = get_children() + [UI]
 	for i in descendants:
@@ -56,17 +59,15 @@ func saveLevel():
 
 
 func _on_SaveButton_pressed():
-#	iterate_names()
-#	for i in level_names:
-#		var x = 0
-#		if data["name"] == i:
-#			data["name"] += str(x)
-#			x += 1
+	for i in GlobalVariables.userdata.saved_levels:
+		#print(data.level_name)
+		if i.level_name == data.level_name:
+			GlobalVariables.userdata.saved_levels.erase(i)
+			break
 	GlobalVariables.userdata.saved_levels.append(data)
 	GlobalVariables.saveGame()
 
 func _on_PlayButton_pressed():
-	position = Vector2(0,0)
 	UI.show()
 	saveLevel()
 #	ResourceSaver.save("res://current_scene.tscn", GlobalVariables.level)
@@ -89,7 +90,13 @@ func _on_ExportButton_pressed():
 
 
 func _on_CameraButton_toggled(button_pressed):
-	if button_pressed == true:
+	if button_pressed:
 		data.player.camera = true
-	elif button_pressed == false:
+	else:
 		data.player.camera = false
+
+
+func _on_RenameButton2_pressed():
+	#print(GlobalVariables.userdata.saved_levels[0].level_name)
+	data.level_name = RenameLevelText.text
+	get_parent().RenamePanel.hide()

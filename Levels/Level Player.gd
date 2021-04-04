@@ -2,11 +2,16 @@ extends Node
 
 onready var level = $Level999
 onready var Player = $Level999/Player
+onready var Camera = Player.get_node("Camera2D")
 onready var editor = $"Level Editor"
+onready var LoadPanel = $"Level Editor/Panel3"
+onready var LoadLevelText = $"Level Editor/Panel3/LineEdit"
+onready var RenamePanel = $"Level Editor/Panel4"
+onready var RenameButton = $"Level Editor/Panel4/RenameButton2"
 onready var PlayButton = $"Level Editor/Panel2/PlayButton"
 onready var CameraButton = $"Level Editor/Panel2/CameraButton"
 onready var PlayerColorButton = $"Level Editor/Panel2/PlayerColorButton"
-#onready var ExportButton = $"Level Editor/Panel2/ExportButton"
+onready var SaveButton = $"Level Editor/Panel2/SaveButton"
 onready var colorButtons = get_tree().get_nodes_in_group("colorButton")
 onready var OrbAdder = $"Level Editor/Panel/OrbAdder"
 onready var HazardAdder = $"Level Editor/Panel/HazardAdder"
@@ -28,41 +33,41 @@ var color_pick : String
 func add_object(obj : String):
 	current_selected = load("res://" + obj + ".tscn").instance()
 	level.add_child(current_selected)
-	#current_selected.input_pickable = true
-	#current_selected.connect("input_event", self, "_Object_input_event", [current_selected])
-	#print(current_selected.get_signal_connection_list("input_event"))
 
 func loadLevel():
 	level.queue_free()
 	level = GlobalVariables.level.instance()
 	Player = level.get_node("Player")
+	Player.color = level.data.player.color
 	add_child(level)
 	move_child(level, 0)
 	PlayButton.connect("pressed", level, "_on_PlayButton_pressed")
+	SaveButton.connect("pressed", level, "_on_SaveButton_pressed")
 	CameraButton.connect("toggled", level, "_on_CameraButton_toggled")
-	Player.get_node("Camera2D").current = false	
+	RenameButton.connect("pressed", level, "_on_RenameButton2_pressed")
+	if level.data.player.camera:
+		CameraButton.pressed = true
+	Camera.current = false
 #	ExportButton.connect("pressed", level, "_on_ExportButton_pressed")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVariables.editor = true
 	#Player.connect("input_event", self, "_Object_input_event", [Player])
 	#$Level999/Tile.connect("input_event", self, "_Object_input_event", [$Level999/Tile])
-	if level.data.player.camera == true:
-		CameraButton.pressed = true
+	#print(level.data.player.camera)
+#	if level.data.player.camera == true:
+#		CameraButton.pressed = true
 	GlobalVariables.speedrun = false
-	if GlobalVariables.editor_playing == true:
+	if GlobalVariables.editor_playing:
 		loadLevel()
 		GlobalVariables.editor_playing = false
 	if not level.get_node_or_null("ExitSprite") == null:
 		ExitAdder.disabled = true
 	if not GlobalVariables.userdata.has("saved_levels"):
 		GlobalVariables.userdata.saved_levels = []
-#	$"Level Editor/Panel3".raise()
 	VisualServer.set_default_clear_color(Color(0.682,0.682,0.682,1.0))
 	displayButtons("white")
-	Player.get_node("Camera2D").current = false
-	#level.get_node("Player").connect("mouse_entered", self, "_on_Object_mouse_entered", [level.get_node("Player")])
-	#level.get_node("Player").connect("mouse_exited", self, "_on_Object_mouse_exited", [level.get_node("Player")])
+	Camera.current = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -77,33 +82,39 @@ func _process(_delta):
 		OrbAdder.disabled = false
 		HazardAdder.disabled = false
 		PlayerColorButton.disabled = false
-	if Input.is_action_pressed("ui_left") and level.position.x > -640:
-		level.position.x += 8
-	if Input.is_action_pressed("ui_right") and level.position.x < 1408:
-		level.position.x -= 8
-	if not current_selected == null:
-		var m = level.get_local_mouse_position()
-		if not Input.is_action_pressed("shift"):
-			current_selected.position = Vector2(stepify(m.x, 8),stepify(m.y, 8))
+	var m = level.get_local_mouse_position()
+	if not LoadPanel.is_visible() and not RenamePanel.is_visible():
+		if Input.is_action_pressed("ui_left") and level.position.x > -480:
+			level.position.x += 8
+		if Input.is_action_pressed("ui_right") and level.position.x < 1248:
+			level.position.x -= 8
+		if not current_selected == null:
+			if Input.is_action_pressed("shift"):
+				current_selected.position = Vector2(stepify(m.x, 1),stepify(m.y, 1))
+			else:
+				current_selected.position = Vector2(stepify(m.x, 8),stepify(m.y, 8))
+			if Player == current_selected:
+				level.data.player.position = Player.position
+			else:
+				level.data[current_selected.name] = current_selected.position
+			if Input.is_action_pressed("ui_cancel") and not current_selected == Player:
+				if current_selected.name == "ExitSprite":
+					ExitAdder.disabled = false
+				current_selected.queue_free()
+				level.data.erase(current_selected.name)
 		else:
-			current_selected.position = Vector2(stepify(m.x, 1),stepify(m.y, 1))
-#			level.data[h] = {"position": current_selected.position}
-		if Input.is_action_pressed("ui_cancel") and not current_selected == Player:
-			current_selected.queue_free()
-	else:
-		var m = level.get_local_mouse_position()
-		var x = level.get_children()
-		x.erase(level.get_node("CanvasLayer"))
-		for i in x:
-			if "Player" == i.name or "Tile" in i.name or "tile" in i.name or "Hazard" in i.name:
-				if m.x > i.position.x - 16 and m.y < i.position.y + 16 and m.y > i.position.y - 16 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
-					current_selected = i
-			elif "ExitSprite" == i.name:
-				if m.x > i.position.x - 16 and m.y < i.position.y + 32 and m.y > i.position.y - 32 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
-					current_selected = i
-			elif "ColorOrb" in i.name:
-				if m.x > i.position.x - 24 and m.y < i.position.y + 36 and m.y > i.position.y - 36 and m.x < i.position.x + 24 and Input.is_action_pressed("mousebutton"):
-					current_selected = i
+			var x = level.get_children()
+			x.erase(level.get_node("CanvasLayer"))
+			for i in x:
+				if Player == i or "Tile" in i.name or "tile" in i.name or "Hazard" in i.name:
+					if m.x > i.position.x - 16 and m.y < i.position.y + 16 and m.y > i.position.y - 16 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
+						current_selected = i
+				elif "ExitSprite" == i.name:
+					if m.x > i.position.x - 16 and m.y < i.position.y + 32 and m.y > i.position.y - 32 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
+						current_selected = i
+				elif "ColorOrb" in i.name:
+					if m.x > i.position.x - 24 and m.y < i.position.y + 36 and m.y > i.position.y - 36 and m.x < i.position.x + 24 and Input.is_action_pressed("mousebutton"):
+						current_selected = i
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://Levels/Title screen.tscn")
@@ -185,24 +196,75 @@ func _on_WhiteButton_pressed():
 
 
 func _on_LoadButton2_pressed():
-	var n = $"Level Editor/Panel3/LineEdit".text
+	var n = LoadLevelText.text
 	var x = []
 	if not GlobalVariables.userdata.saved_levels.empty():
-		if GlobalVariables.userdata.saved_levels[0] is String:
-			print(true)
 		for i in GlobalVariables.userdata.saved_levels:
-			x.append(i.data["name"])
+			x.append(i.level_name)
 		var r = x.find(n)
 		if not r == -1:
 			if GlobalVariables.userdata.saved_levels.has(GlobalVariables.userdata.saved_levels[r]):
-				print(GlobalVariables.userdata.saved_levels[r])
-				GlobalVariables.level = GlobalVariables.userdata.saved_levels[r]
-				print(GlobalVariables.level)
-				loadLevel()
+				level.data = GlobalVariables.userdata.saved_levels[r]
+				level.position = Vector2(0,0)
+				var y = level.get_children()
+				y.erase(level.get_node("CanvasLayer"))
+				y.erase(level.get_node("Player"))
+				for i in y:
+					i.queue_free()
+				level.data.player.position = str2var("Vector2" + str(level.data.player.position))
+				Player.position = level.data.player.position
+				Player.color = level.data.player.color
+				if level.data.player.camera:
+					CameraButton.pressed = true
+				for i in level.data:
+					var j
+					var exists : bool = false
+					if "Tile" in i:
+						j = preload("res://Tilecostumes/Tile.tscn").instance()
+						exists = true
+					elif "Redtile" in i:
+						j = preload("res://Tilecostumes/Redtile.tscn").instance()
+						exists = true
+					elif "Bluetile" in i:
+						j = preload("res://Tilecostumes/Bluetile.tscn").instance()
+						exists = true
+					elif "Greentile" in i:
+						j = preload("res://Tilecostumes/Greentile.tscn").instance()
+						exists = true
+					elif "RedHazard" in i:
+						j = preload("res://Hazards/RedHazard.tscn").instance()
+						exists = true
+					elif "BlueHazard" in i:
+						j = preload("res://Hazards/BlueHazard.tscn").instance()
+						exists = true
+					elif "GreenHazard" in i:
+						j = preload("res://Hazards/GreenHazard.tscn").instance()
+						exists = true
+					elif "RedColorOrb" in i:
+						j = preload("res://ColorOrbs/RedColorOrb.tscn").instance()
+						exists = true
+					elif "BlueColorOrb" in i:
+						j = preload("res://ColorOrbs/BlueColorOrb.tscn").instance()
+						exists = true
+					elif "GreenColorOrb" in i:
+						j = preload("res://ColorOrbs/GreenColorOrb.tscn").instance()
+						exists = true
+					elif "ExitSprite" in i:
+						j = preload("res://ExitSprite.tscn").instance()
+						exists = true
+					if exists:
+						level.add_child(j)
+						level.data[i] = str2var("Vector2" + str(level.data.get(i)))
+						j.position = level.data[i]
+						j = null
+						exists = false
+				if not level.get_node_or_null("ExitSprite") == null:
+					ExitAdder.disabled = true
 		else:
 			printerr("Level not found!")
 	else:
 		printerr("No levels!")
+	$"Level Editor/Panel3".hide()
 
 
 #func _on_ImportButton_pressed():
@@ -241,3 +303,17 @@ func _on_HazardAdder_pressed():
 func _on_PlayerColorButton_pressed():
 	Player.color = color_pick
 	level.data.player.color = color_pick
+
+
+func _on_LoadButton_pressed():
+	LoadPanel.show()
+
+
+func _on_CancelButton_pressed():
+	LoadPanel.hide()
+	RenamePanel.hide()
+
+
+func _on_RenameButton_pressed():
+	level.RenameLevelText.text = level.data.level_name
+	RenamePanel.show()
