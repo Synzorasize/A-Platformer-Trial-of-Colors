@@ -1,6 +1,7 @@
 extends Area2D
 
 var state : bool
+onready var a = $AnimatedSprite
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -11,16 +12,17 @@ var state : bool
 func _ready():
 	state = true
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if state == true:
-		$AnimatedSprite.play("OrbOn")
+	if state:
+		a.play("OrbOn")
 	else:
-		$AnimatedSprite.play("OrbOff")
+		a.play("OrbOff")
 
 
 func _on_BlueColorOrb_body_shape_entered(_body_id, body, _body_shape, _area_shape):
-	if body.name == "Player" and GlobalVariables.editor == false:
-		if state == true:
+	if body.name == "Player" and not GlobalVariables.editor:
+		if state:
 			state = false
 			$"../Player".color = "blue"
