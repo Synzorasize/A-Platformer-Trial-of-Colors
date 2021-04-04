@@ -23,12 +23,7 @@ onready var WhiteButton = $"Level Editor/Panel/WhiteButton"
 var current_selected : Object
 var click : bool
 var object : Object
-#var h
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var color_pick : String
-#var import : bool = false
 
 func add_object(obj : String):
 	current_selected = load("res://" + obj + ".tscn").instance()
@@ -48,15 +43,9 @@ func loadLevel():
 	if level.data.player.camera:
 		CameraButton.pressed = true
 	Camera.current = false
-#	ExportButton.connect("pressed", level, "_on_ExportButton_pressed")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVariables.editor = true
-	#Player.connect("input_event", self, "_Object_input_event", [Player])
-	#$Level999/Tile.connect("input_event", self, "_Object_input_event", [$Level999/Tile])
-	#print(level.data.player.camera)
-#	if level.data.player.camera == true:
-#		CameraButton.pressed = true
 	GlobalVariables.speedrun = false
 	if GlobalVariables.editor_playing:
 		loadLevel()
@@ -71,9 +60,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-#	if click == true:
-	#	if Input.is_action_pressed("mousebutton"):
-	#		current_selected = obj
 	if color_pick == "white":
 		OrbAdder.disabled = true
 		HazardAdder.disabled = true
@@ -124,22 +110,13 @@ func _on_BackButton_pressed():
 
 func _on_TileAdder_pressed():
 	if color_pick == "white":
-	#	var x = 1
 		add_object("Tilecostumes/Tile")
-	#	while level.data.has(h):
-	#		if level.data.has(h):
-	#			h[-1] = str(x)
-	#			x += 1
-	#		else:
-	#			level.data[h] = {}
 	elif color_pick == "red":
 		add_object("Tilecostumes/Redtile")
 	elif color_pick == "blue":
 		add_object("Tilecostumes/Bluetile")
 	elif color_pick == "green":
 		add_object("Tilecostumes/Greentile")
-#	$"Level Editor"/Panel/PlayerAdder.disabled = true
-
 
 func _on_Level_Editor_gui_input(event):
 	if not current_selected == null:
@@ -147,19 +124,6 @@ func _on_Level_Editor_gui_input(event):
 			current_selected = null
 
 func displayButtons(color : String):
-	#color = color.insert(0, color.left(0).capitalize())
-	#for button in colorButtons:
-		#if color in button.name:
-		#	button.set("custom_styles/normal", load("res://Art/Buttons/"+color+"ColorPick.tres"))
-		#else:
-			#if button.name == "RedButton":
-			#	button.set("custom_styles/normal", load("res://Art/Buttons/RedColorPicked.tres"))
-			#if button.name == "BlueButton":
-			#	button.set("custom_styles/normal", load("res://Art/Buttons/BlueColorPicked.tres"))
-			#if button.name == "GreenButton":
-			#	button.set("custom_styles/normal", load("res://Art/Buttons/GreenColorPicked.tres"))
-			#if button.name == "WhiteButton":
-			#	button.set("custom_styles/normal", load("res://Art/Buttons/WhiteColorPicked.tres"))
 	if color_pick == "red":
 		RedButton.set("custom_styles/normal", preload("res://Art/Buttons/RedColorPick.tres"))
 	elif color_pick == "blue":
@@ -189,10 +153,6 @@ func _on_GreenButton_pressed():
 
 func _on_WhiteButton_pressed():
 	displayButtons("white")
-
-
-#func _on_LoadButton_pressed():
-#	$"Level Editor/Panel3".show()
 
 
 func _on_LoadButton2_pressed():
@@ -265,17 +225,6 @@ func _on_LoadButton2_pressed():
 	else:
 		printerr("No levels!")
 	$"Level Editor/Panel3".hide()
-
-
-#func _on_ImportButton_pressed():
-#	import = true
-#	$FileDialog.popup()
-
-#func _on_FileDialog_confirmed():
-#	if import == true:
-#		GlobalVariables.level = $FileDialog.get_current_file()
-#		loadLevel()
-
 
 func _on_ExitAdder_pressed():
 	add_object("ExitSprite")
