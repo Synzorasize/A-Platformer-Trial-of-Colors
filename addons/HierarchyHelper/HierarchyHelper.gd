@@ -47,3 +47,7 @@ func get_all_descendants(focus : Object, generations : int):
 						group += i.get_children()
 			g += 1
 		return group
+
+func get_sibling_descendant(sibling : String, descendant : String, focus : Object, generations : int):
+	var node = HH.get_descendant(descendant, HH.get_sibling(sibling, focus), generations)
+	return node
