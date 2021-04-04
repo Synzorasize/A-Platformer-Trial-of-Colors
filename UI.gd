@@ -28,9 +28,7 @@ func _ready():
 	$VBoxContainer/LevelNum.text = "Level " + str(GlobalVariables.LevelNum)
 	if GlobalVariables.colorblind_mode == true:
 		GlobalVariables.colorblind_mode_on(self)
-#	buttoncolors("normal")
 func _enter_tree():
-#	print(get_tree().get_root().get_node_or_null("Level Player").name)
 	if not get_tree().get_root().get_node_or_null("Level Player") == null:
 		hide()
 
