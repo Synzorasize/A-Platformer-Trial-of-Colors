@@ -36,7 +36,7 @@ func restart():
 func _enter_tree():
 	GlobalVariables.LevelNum = 999
 func _ready():
-	if GlobalVariables.editor_playing == true:
+	if GlobalVariables.editor_playing == true and GlobalVariables.editor == false:
 		Player.color = data.player.color
 		if not get_node_or_null("ExitSprite") == null:
 			get_node("ExitSprite").connect("body_entered", Player, "_on_ExitSprite_body_entered")
