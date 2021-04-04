@@ -18,30 +18,30 @@ func _ready():
 #	pass
 func _on_Player_iamred():
 	c = $CollisionShape2D
-	if c.disabled == true and is_visible() == true:
+	if c.disabled and is_visible():
 		c.disabled = false
 
 
 func _on_Player_iamblue():
 	c = $CollisionShape2D
-	if c.disabled == false:
+	if not c.disabled:
 		c.disabled = true
 
 
 func _on_Player_iamgreen():
 	c = $CollisionShape2D
-	if c.disabled == false:
+	if not c.disabled:
 		c.disabled = true
 
 
 func _on_Switch_body_shape_entered(_body_id, body, _body_shape, _area_shape):
 	if body.name == "Player" and t.get_time_left() == 0:
 		t.start()
-		if state == false:
+		if not state:
 			emit_signal("switchon")
 			s.flip_h = true
 			state = true
-		elif state == true:
+		else:
 			emit_signal("switchoff")
 			s.flip_h = false
 			state = false

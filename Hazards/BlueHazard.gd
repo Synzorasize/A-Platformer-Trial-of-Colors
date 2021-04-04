@@ -16,23 +16,23 @@ func _process(delta):
 
 func _on_Player_iamblue():
 	c = $CollisionShape2D
-	if c.disabled == false:
+	if not c.disabled:
 		c.disabled = true
 
 
 func _on_Player_iamred():
 	c = $CollisionShape2D
-	if c.disabled == true and is_visible() == true:
+	if c.disabled and is_visible():
 		c.disabled = false
 
 
 func _on_Player_iamgreen():
 	c = $CollisionShape2D
-	if c.disabled == true and is_visible() == true:
+	if c.disabled and is_visible():
 		c.disabled = false
 
 func _on_Hazard_body_shape_entered(_body_id, body, _body_shape, _area_shape):
-	if body.name == "Player" and GlobalVariables.editor == false: 
+	if body.name == "Player" and not GlobalVariables.editor: 
 		if GlobalVariables.checkpoint == 0:
 			if GlobalVariables.LevelNum == 999:
 				get_parent().restart()

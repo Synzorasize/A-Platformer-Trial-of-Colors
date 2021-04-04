@@ -24,18 +24,18 @@ func _on_Teleporter_body_shape_entered(_body_id, body, _body_shape, _area_shape)
 		Timer.start()
 
 func _on_Teleporter_teleportPlayer():
-	if is_visible() == true:
+	if is_visible():
 		Player.position = position
 
 func _on_Player_iamred():
 	c = $CollisionShape2D
-	if c.disabled == true and is_visible() == true:
+	if c.disabled and is_visible():
 		c.disabled = false
 
 
 func _on_Player_iamblue():
 	c = $CollisionShape2D
-	if c.disabled == false:
+	if not c.disabled:
 		c.disabled = true
 
 
