@@ -24,5 +24,5 @@ func _on_Player_restartcheckpoint():
 			$"../Player".position = position
 			$"../Player".color = "red"
 			$"../GreenColorOrb".state = true
-	if GlobalVariables.speedrun == true:
+	if GlobalVariables.speedrun:
 		Timer.start()

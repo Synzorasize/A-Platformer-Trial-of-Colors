@@ -26,7 +26,7 @@ func _ready():
 	else:
 		$VBoxContainer/HBoxContainer.show()
 	$VBoxContainer/LevelNum.text = "Level " + str(GlobalVariables.LevelNum)
-	if GlobalVariables.colorblind_mode == true:
+	if GlobalVariables.colorblind_mode:
 		GlobalVariables.colorblind_mode_on(self)
 #	buttoncolors("normal")
 func _enter_tree():
@@ -38,7 +38,7 @@ func _enter_tree():
 func _process(_delta):
 	if Player.victory == false:
 		buttoncolors("normal")
-	if GlobalVariables.speedrun == true:
+	if GlobalVariables.speedrun:
 		speedrun_time = stepify((4096 + checkpoint_speedrun_time) - Timer.get_time_left(), 0.01)
 		if Timer.get_wait_time():
 			SpeedrunLabel.text = str(speedrun_time)
@@ -89,7 +89,7 @@ func _on_ExitSprite_body_entered(body):
 		buttoncolors("victory")
 		$TextureRect.show()
 		get_tree().paused = true
-		if GlobalVariables.speedrun == true:
+		if GlobalVariables.speedrun:
 			SpeedrunLabel.text = str(speedrun_time)
 			save_speedrun_time(GlobalVariables.LevelNum)
 		if GlobalVariables.max_LevelNum == GlobalVariables.LevelNum:
@@ -123,7 +123,7 @@ func _on_BackButton_pressed():
 func _on_Checkpoint_body_shape_entered(_body_id, body, _body_shape, _area_shape):
 	if body.name == "Player" and GlobalVariables.editor == false:
 		$VBoxContainer/Checkpoint.show()
-		if GlobalVariables.speedrun == true and checkpoint_speedrun_time == 0:
+		if GlobalVariables.speedrun and checkpoint_speedrun_time == 0:
 			checkpoint_speedrun_time = 4096 - Timer.get_time_left()
 			Timer.start()
 
@@ -134,7 +134,7 @@ func _on_No_pressed():
 
 
 func _on_RestartButton_pressed():
-	if $RestartWarning.is_visible() == false and Player.victory == true:
+	if $RestartWarning.is_visible() == false and Player.victory or $RestartWarning.is_visible() and not GlobalVariables.checkpoint == 0:
 		$RestartWarning.show()
 		get_tree().paused = true
 		No.add_stylebox_override("normal", currentnormal)
@@ -145,6 +145,7 @@ func _on_RestartButton_pressed():
 		Yes.add_stylebox_override("pressed", currenthoverpressed)
 	elif GlobalVariables.LevelNum == 999:
 		HH.get_grandparent(self).restart()
+		get_tree().paused = false
 	else:
 		get_tree().paused = false
 		get_tree().reload_current_scene()
@@ -152,7 +153,7 @@ func _on_RestartButton_pressed():
 
 
 func _on_PauseButton_toggled(button_pressed):
-	if button_pressed == true:
+	if button_pressed:
 		get_tree().paused = true
 	elif button_pressed == false:
 		get_tree().paused = false

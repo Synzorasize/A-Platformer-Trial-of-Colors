@@ -4,6 +4,8 @@ const APTC_saveGame = "user://APTC_savegame.json"
 const APTC_config = "user://APTC_config.json"
 
 var editor : bool = false
+var level : PackedScene = PackedScene.new()
+var editor_playing : bool = false
 
 var LevelNum : int = 1
 var max_LevelNum : int = 1
@@ -17,9 +19,6 @@ var userdata = {
 	"saved_levels": []
 }
 
-var level : PackedScene = PackedScene.new()
-var editor_playing : bool = false
-
 var colorblind_mode = false
 var BGcolors_off = false
 var ButtonColors_off = false
@@ -31,6 +30,7 @@ var b
 
 func saveGame():
 	var file = File.new()
+	#file.open(APTC_saveGame, File.WRITE)
 	file.open_encrypted_with_pass(APTC_saveGame, File.WRITE, "Synzoraflowersize98765132716")
 	file.store_string(to_json(userdata))
 	file.close()
@@ -39,6 +39,7 @@ func loadGame():
 	var file = File.new()
 	var config_file = ConfigFile.new()
 	if file.file_exists(APTC_saveGame):
+		#file.open(APTC_saveGame, File.READ)
 		file.open_encrypted_with_pass(APTC_saveGame, File.READ, "Synzoraflowersize98765132716")
 		userdata = parse_json(file.get_as_text())
 		file.close()
@@ -89,12 +90,12 @@ func replace(group, new_item_path, focus, is_coloredItem : bool):
 		for itemsChecker in range(items.size()):
 			var replacee = load("res://" + new_item_path + ".tscn").instance()
 			focus.call_deferred("add_child", replacee)
-			if is_coloredItem == true:
+			if is_coloredItem:
 				Player.connect("iamred", replacee, "_on_Player_iamred")
 				Player.connect("iamblue", replacee, "_on_Player_iamblue")
 				Player.connect("iamgreen", replacee, "_on_Player_iamgreen")
-			if colorblind_mode == true:
-				if items[itemsChecker].is_in_group("Orbs") or is_coloredItem == true:
+			if colorblind_mode:
+				if items[itemsChecker].is_in_group("Orbs") or is_coloredItem:
 					var label = preload("res://Art/Fonts/Colorblind_Label.tscn").instance()
 					replacee.add_child(label)
 					label.rect_position = Vector2(-16,0)
@@ -141,10 +142,10 @@ func replace_switch(item, switch_color, focus, signal_id):
 	if not time == 0:
 		timer.set_autostart(true)
 		timer.set_wait_time(time)
-	if mainItem.get_node("Sprite").flip_h == false:
+	if not mainItem.get_node("Sprite").flip_h:
 		replacee.state = true
 		replacee.get_node("Sprite").flip_h = true
-	elif mainItem.get_node("Sprite").flip_h == true:
+	else:
 		replacee.state = false
 		replacee.get_node("Sprite").flip_h = false
 	mainItem.queue_free()
@@ -156,7 +157,7 @@ func replace_switch(item, switch_color, focus, signal_id):
 	replacee.position = mainItem.position
 	replacee.connect("switchon", focus, "_on_Switch" + signal_id + "_switchon")
 	replacee.connect("switchoff", focus, "_on_Switch" + signal_id + "_switchoff")
-	if colorblind_mode == true:
+	if colorblind_mode:
 		var label = preload("res://Art/Fonts/Colorblind_Label.tscn").instance()
 		replacee.add_child(label)
 		label.rect_position = Vector2(-16,0)
@@ -199,7 +200,7 @@ func replace_teleporter(group, teleporter_color, focus, nonGroup):
 		player.connect("iamblue", replacee, "_on_Player_iamblue")
 		player.connect("iamgreen", replacee, "_on_Player_iamgreen")
 		
-		if colorblind_mode == true:
+		if colorblind_mode:
 			var label = preload("res://Art/Fonts/Colorblind_Label.tscn").instance()
 			replacee.add_child(label)
 			label.rect_position = Vector2(-16,0)
