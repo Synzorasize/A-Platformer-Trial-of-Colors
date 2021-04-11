@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Small Scrape-SoundBible.com-1395491979.wav-b77e0befa97c43afe9e050d62d301b6c.sample"
+
+[deps]
+
+source_file="res://Music/Small Scrape-SoundBible.com-1395491979.wav"
+dest_files=[ "res://.import/Small Scrape-SoundBible.com-1395491979.wav-b77e0befa97c43afe9e050d62d301b6c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

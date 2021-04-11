@@ -1,7 +1,7 @@
 extends Node
 
 onready var level = $Level999
-onready var Player = $Level999/Player
+onready var Player = level.get_node("Player")
 onready var Camera = Player.get_node("Camera2D")
 onready var editor = $"Level Editor"
 onready var LoadPanel = $"Level Editor/Panel3"
@@ -23,12 +23,7 @@ onready var WhiteButton = $"Level Editor/Panel/WhiteButton"
 var current_selected : Object
 var click : bool
 var object : Object
-#var h
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var color_pick : String
-#var import : bool = false
 
 func add_object(obj : String):
 	current_selected = load("res://" + obj + ".tscn").instance()
@@ -52,11 +47,6 @@ func loadLevel():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVariables.editor = true
-	#Player.connect("input_event", self, "_Object_input_event", [Player])
-	#$Level999/Tile.connect("input_event", self, "_Object_input_event", [$Level999/Tile])
-	#print(level.data.player.camera)
-#	if level.data.player.camera == true:
-#		CameraButton.pressed = true
 	GlobalVariables.speedrun = false
 	if GlobalVariables.editor_playing:
 		loadLevel()
@@ -71,9 +61,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-#	if click == true:
-	#	if Input.is_action_pressed("mousebutton"):
-	#		current_selected = obj
 	if color_pick == "white":
 		OrbAdder.disabled = true
 		HazardAdder.disabled = true
@@ -124,21 +111,13 @@ func _on_BackButton_pressed():
 
 func _on_TileAdder_pressed():
 	if color_pick == "white":
-	#	var x = 1
 		add_object("Tilecostumes/Tile")
-	#	while level.data.has(h):
-	#		if level.data.has(h):
-	#			h[-1] = str(x)
-	#			x += 1
-	#		else:
-	#			level.data[h] = {}
 	elif color_pick == "red":
 		add_object("Tilecostumes/Redtile")
 	elif color_pick == "blue":
 		add_object("Tilecostumes/Bluetile")
 	elif color_pick == "green":
 		add_object("Tilecostumes/Greentile")
-#	$"Level Editor"/Panel/PlayerAdder.disabled = true
 
 
 func _on_Level_Editor_gui_input(event):
@@ -189,11 +168,6 @@ func _on_GreenButton_pressed():
 
 func _on_WhiteButton_pressed():
 	displayButtons("white")
-
-
-#func _on_LoadButton_pressed():
-#	$"Level Editor/Panel3".show()
-
 
 func _on_LoadButton2_pressed():
 	var n = LoadLevelText.text

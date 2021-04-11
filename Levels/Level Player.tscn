@@ -13,11 +13,11 @@
 [ext_resource path="res://Art/Buttons/RedColorPicked.tres" type="StyleBox" id=11]
 [ext_resource path="res://Art/Buttons/RedColorPick.tres" type="StyleBox" id=12]
 [ext_resource path="res://Art/Buttons/GreenColorPicked.tres" type="StyleBox" id=13]
-[ext_resource path="res://Art/Buttons/BlueColorPick.tres" type="StyleBox" id=14]
+[ext_resource path="res://Art/Buttons/GreenColorPick.tres" type="StyleBox" id=14]
 [ext_resource path="res://Art/Buttons/WhiteColorPick.tres" type="StyleBox" id=15]
 [ext_resource path="res://Art/Buttons/WhiteColorPicked.tres" type="StyleBox" id=16]
 [ext_resource path="res://Art/Buttons/BlueColorPicked.tres" type="StyleBox" id=17]
-[ext_resource path="res://Art/Buttons/GreenColorPick.tres" type="StyleBox" id=18]
+[ext_resource path="res://Art/Buttons/BlueColorPick.tres" type="StyleBox" id=18]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -84,7 +84,7 @@ size_flags_vertical = 0
 custom_styles/hover = ExtResource( 17 )
 custom_styles/pressed = ExtResource( 17 )
 custom_styles/focus = SubResource( 1 )
-custom_styles/normal = ExtResource( 14 )
+custom_styles/normal = ExtResource( 18 )
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 __meta__ = {
@@ -122,7 +122,7 @@ size_flags_vertical = 0
 custom_styles/hover = ExtResource( 13 )
 custom_styles/pressed = ExtResource( 13 )
 custom_styles/focus = SubResource( 1 )
-custom_styles/normal = ExtResource( 18 )
+custom_styles/normal = ExtResource( 14 )
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 __meta__ = {

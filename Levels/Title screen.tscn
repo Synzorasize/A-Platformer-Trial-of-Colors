@@ -1,0 +1,733 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Art/Fonts/UI.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Art/Fonts/UI_25.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Levels/Title screen.gd" type="Script" id=3]
+[ext_resource path="res://Art/Fonts/UI_huge.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Art/Buttons/ButtonHover_Pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://Art/Buttons/ButtonNormal.tres" type="StyleBox" id=6]
+[ext_resource path="res://Art/UI/PanelBG.tres" type="StyleBox" id=7]
+[ext_resource path="res://Art/A Platformer Trial of Colors Thumbnail.png" type="Texture" id=8]
+[ext_resource path="res://Gabriola.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Art/Fonts/UI_20.tres" type="DynamicFont" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Title screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+anchor_right = 1.0
+anchor_bottom = 0.996
+margin_bottom = 1.79999
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.996
+margin_bottom = -288.2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CenterContainer"]
+margin_left = 108.0
+margin_top = 46.0
+margin_right = 659.0
+margin_bottom = 112.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 4 )
+text = "A Platformer Trial of Colors"
+align = 1
+valign = 1
+
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.996
+margin_top = 112.0
+margin_bottom = -59.2
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" type="Button" parent="VSplitContainer"]
+margin_left = 327.0
+margin_right = 441.0
+margin_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 114, 31 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Start Game"
+
+[node name="Instructions" type="Button" parent="VSplitContainer"]
+margin_left = 323.0
+margin_top = 41.0
+margin_right = 445.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 122, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Instructions"
+
+[node name="SpeedrunMode" type="Button" parent="VSplitContainer"]
+margin_left = 306.0
+margin_top = 82.0
+margin_right = 461.0
+margin_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 155, 31 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Speedrun Mode"
+
+[node name="SpeedrunStats" type="Button" parent="VSplitContainer"]
+margin_left = 310.0
+margin_top = 123.0
+margin_right = 458.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 148, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Speedrun Stats"
+
+[node name="LevelEditor" type="Button" parent="VSplitContainer"]
+margin_left = 324.0
+margin_top = 164.0
+margin_right = 444.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Level Editor"
+
+[node name="SavedLevels" type="Button" parent="VSplitContainer"]
+margin_left = 324.0
+margin_top = 205.0
+margin_right = 444.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Saved Levels"
+
+[node name="Settings" type="Button" parent="VSplitContainer"]
+margin_left = 342.0
+margin_top = 246.0
+margin_right = 425.0
+margin_bottom = 277.0
+rect_min_size = Vector2( 83, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+
+[node name="CenterContainer3" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.996
+margin_top = 377.0
+margin_bottom = 1.80002
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer3"]
+margin_left = 208.0
+margin_top = 13.0
+margin_right = 559.0
+margin_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Copyright of Synzorasize."
+align = 1
+valign = 1
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_right = -64.0
+margin_bottom = -2.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heading" type="Label" parent="Panel"]
+margin_top = 8.0
+margin_right = 640.0
+margin_bottom = 58.0
+size_flags_horizontal = 2
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 1 )
+text = "Instructions"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="Label" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 58.0
+margin_right = -16.0
+margin_bottom = -64.0
+custom_fonts/font = ExtResource( 2 )
+text = "If the character is red you can go through red things and stand on other-colored things respectively. Same goes for blue and green.
+There are tiles, orbs, hazards, teleporters and switches. Tiles are what the player stands on. If they are a colored tile, the character has to be the same color as it to go through it. Same goes for hazards, and with teleporters and switches, you need to be the same color to interact with it. Orbs change your color and can only be used once. Hazards will kill the player and teleporters teleport the player back and forth from each teleporter. Switches can activate/deactivate items in levels."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 288.0
+margin_top = 400.0
+margin_right = -288.0
+margin_bottom = -11.0
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 560.0
+margin_top = 400.0
+margin_right = -16.0
+margin_bottom = -11.0
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 400.0
+margin_right = -560.0
+margin_bottom = -11.0
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Previous"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 224.0
+margin_top = 32.0
+margin_right = -224.0
+margin_bottom = -34.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heading" type="Label" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -320.0
+size_flags_horizontal = 2
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "Speedrun Stats (Best Times)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 64.0
+margin_right = -32.0
+margin_bottom = -48.0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedrunTimeLevel1" type="Label" parent="Panel2/VSplitContainer"]
+margin_right = 256.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 1:"
+align = 1
+
+[node name="SpeedrunTimeLevel2" type="Label" parent="Panel2/VSplitContainer"]
+margin_top = 39.0
+margin_right = 256.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 2:"
+align = 1
+
+[node name="SpeedrunTimeLevel3" type="Label" parent="Panel2/VSplitContainer"]
+margin_top = 78.0
+margin_right = 256.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 3:"
+align = 1
+
+[node name="SpeedrunTimeLevel4" type="Label" parent="Panel2/VSplitContainer"]
+margin_top = 117.0
+margin_right = 256.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 4:"
+align = 1
+
+[node name="SpeedrunTimeLevel5" type="Label" parent="Panel2/VSplitContainer"]
+margin_top = 156.0
+margin_right = 256.0
+margin_bottom = 187.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 5:"
+align = 1
+
+[node name="SpeedrunTimeLevel6" type="Label" parent="Panel2/VSplitContainer"]
+margin_top = 195.0
+margin_right = 256.0
+margin_bottom = 226.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 6:"
+align = 1
+
+[node name="SpeedrunTimeLevel7" type="Label" parent="Panel2/VSplitContainer"]
+margin_top = 234.0
+margin_right = 256.0
+margin_bottom = 265.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Level 7:"
+align = 1
+
+[node name="CloseButton" type="Button" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 344.0
+margin_right = -120.0
+margin_bottom = -9.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextStats" type="Button" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 232.0
+margin_top = 344.0
+margin_right = -8.0
+margin_bottom = -9.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousStats" type="Button" parent="Panel2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 344.0
+margin_right = -232.0
+margin_bottom = -9.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Previous"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_top = 72.0
+margin_right = -256.0
+margin_bottom = -78.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heading" type="Label" parent="Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -244.0
+size_flags_horizontal = 2
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VBoxContainer" parent="Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 56.0
+margin_right = -32.0
+margin_bottom = -28.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonColorblindMode" type="CheckBox" parent="Panel3/VSplitContainer"]
+margin_right = 24.0
+margin_bottom = 54.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ColorblindMode" type="Label" parent="Panel3/VSplitContainer/CheckButtonColorblindMode"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 10 )
+text = "Color-blind mode"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonBGcolorsOff" type="CheckBox" parent="Panel3/VSplitContainer"]
+margin_top = 54.0
+margin_right = 24.0
+margin_bottom = 108.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="BGcolorsOff" type="Label" parent="Panel3/VSplitContainer/CheckButtonBGcolorsOff"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 10 )
+text = "BG colors off"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonButtonColorsOff" type="CheckBox" parent="Panel3/VSplitContainer"]
+margin_top = 108.0
+margin_right = 24.0
+margin_bottom = 162.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ButtonColorsOff" type="Label" parent="Panel3/VSplitContainer/CheckButtonButtonColorsOff"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 10 )
+text = "Button colors off"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonMuteSound" type="CheckBox" parent="Panel3/VSplitContainer"]
+margin_top = 162.0
+margin_right = 24.0
+margin_bottom = 216.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMuteSound" type="Label" parent="Panel3/VSplitContainer/CheckButtonMuteSound"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 10 )
+text = "Mute sound"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = 258.0
+margin_right = -100.0
+margin_bottom = -11.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel4" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 192.0
+margin_top = 72.0
+margin_right = -192.0
+margin_bottom = -78.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heading" type="Label" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -244.0
+size_flags_horizontal = 2
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "Saved Levels"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VBoxContainer" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 56.0
+margin_right = -16.0
+margin_bottom = -28.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel4/VSplitContainer"]
+margin_right = 352.0
+margin_bottom = 31.0
+
+[node name="DeleteButton" type="Button" parent="Panel4/VSplitContainer/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 60, 28 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
+text = "Delete"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="Panel4/VSplitContainer/HBoxContainer"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 60, 28 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel4/VSplitContainer/HBoxContainer"]
+margin_left = 128.0
+margin_right = 347.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 219, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "CustomLevel"
+clip_text = true
+
+[node name="CloseButton" type="Button" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 152.0
+margin_top = 258.0
+margin_right = -152.0
+margin_bottom = -11.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VSplitContainer/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="VSplitContainer/Instructions" to="." method="_on_Instructions_pressed"]
+[connection signal="pressed" from="VSplitContainer/SpeedrunMode" to="." method="_on_SpeedrunMode_pressed"]
+[connection signal="pressed" from="VSplitContainer/SpeedrunStats" to="." method="_on_SpeedrunStats_pressed"]
+[connection signal="pressed" from="VSplitContainer/LevelEditor" to="." method="_on_LevelEditor_pressed"]
+[connection signal="pressed" from="VSplitContainer/SavedLevels" to="." method="_on_SavedLevels_pressed"]
+[connection signal="pressed" from="VSplitContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Panel/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="Panel/PreviousButton" to="." method="_on_PreviousButton_pressed"]
+[connection signal="pressed" from="Panel2/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Panel2/NextStats" to="." method="_on_NextStats_pressed"]
+[connection signal="pressed" from="Panel2/PreviousStats" to="." method="_on_PreviousStats_pressed"]
+[connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonColorblindMode" to="." method="_on_CheckButtonColorblindMode_toggled"]
+[connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonBGcolorsOff" to="." method="_on_CheckButtonBGcolorsOff_toggled"]
+[connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonButtonColorsOff" to="." method="_on_CheckButtonButtonColorsOff_toggled"]
+[connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonMuteSound" to="." method="_on_CheckButtonMuteSound_toggled"]
+[connection signal="pressed" from="Panel3/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Panel4/CloseButton" to="." method="_on_CloseButton_pressed"]

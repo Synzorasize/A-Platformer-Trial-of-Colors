@@ -6,7 +6,7 @@ var levels_loaded = [preload("res://Levels/Level1.tscn"), preload("res://Levels/
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_LevelButtons()
-	if GlobalVariables.speedrun == true:
+	if GlobalVariables.speedrun:
 		$HBoxContainer/Title.text = "Speedrun Level"
 	else:
 		$HBoxContainer/Title.text = "Level Select"
