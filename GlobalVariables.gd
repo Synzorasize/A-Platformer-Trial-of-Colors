@@ -11,22 +11,19 @@ var LevelNum : int = 1
 var max_LevelNum : int = 1
 var checkpoint : int = 0
 var speedrun : bool = false
-#var restart : bool = false
-var speedrun_times
+var speedrun_times : Dictionary
 var userdata = {
 	"levels_unlocked": max_LevelNum,
 	speedrun_times = {},
 	"saved_levels": []
 }
 
-var colorblind_mode = false
-var BGcolors_off = false
-var ButtonColors_off = false
+var colorblind_mode : bool = false
+var BGcolors_off : bool = false
+var ButtonColors_off : bool = false
+var delayDeath_off : bool = false
 
-const screensize : Vector2 = Vector2(768, 450)
-
-var a
-var b
+const screensize = Vector2(768, 450)
 
 func saveGame():
 	var file = File.new()
@@ -47,10 +44,11 @@ func loadGame():
 		print("No saved data, making new game")
 	if file.file_exists(APTC_config):
 		config_file.load(APTC_config)
-		colorblind_mode = config_file.get_value("UserConfig","colorblind_mode")
-		BGcolors_off = config_file.get_value("UserConfig","BGcolors_off")
-		ButtonColors_off = config_file.get_value("UserConfig","ButtonColors_off")
-		BGmusic.stream_paused = config_file.get_value("UserConfig","muteSound")
+		colorblind_mode = config_file.get_value("UserConfig","colorblind_mode", false)
+		BGcolors_off = config_file.get_value("UserConfig","BGcolors_off", false)
+		ButtonColors_off = config_file.get_value("UserConfig","ButtonColors_off", false)
+		delayDeath_off = config_file.get_value("UserConfig","delayDeath_off", false)
+		BGmusic.stream_paused = config_file.get_value("UserConfig","muteSound", false)
 	else:
 		print("No config file")
 
@@ -60,6 +58,7 @@ func saveSettings():
 	file.set_value("UserConfig","BGcolors_off", BGcolors_off)
 	file.set_value("UserConfig","ButtonColors_off", ButtonColors_off)
 	file.set_value("UserConfig","muteSound", BGmusic.stream_paused)
+	file.set_value("UserConfig","delayDeath_off", delayDeath_off)
 	file.save(APTC_config)
 
 func disable(group, focus):
