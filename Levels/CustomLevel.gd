@@ -13,9 +13,9 @@ export (Dictionary) var data = {
 #var level : PackedScene = PackedScene.new()
 #var level_names = []
 onready var Player = $Player
-onready var Camera = $Player/Camera2D
+onready var Camera = Player.get_node("Camera2D")
 onready var UI = $CanvasLayer/UI
-var RenameLevelText
+var RenameLevelText : LineEdit
 var descendants = []
 #var export : bool = false
 #onready var FD = $"../FileDialog"
@@ -34,15 +34,31 @@ func restart():
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	GlobalVariables.LevelNum = 999
+	JavaScript.eval("""function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}""")
 func _ready():
+	name = "Level999"
 	Camera.current = false
 	if GlobalVariables.editor_playing and not GlobalVariables.editor:
 		Player.color = data.player.color
 		if not get_node_or_null("ExitSprite") == null:
 			get_node("ExitSprite").connect("body_entered", Player, "_on_ExitSprite_body_entered")
 			get_node("ExitSprite").connect("body_entered", UI, "_on_ExitSprite_body_entered")
+		if not get_node_or_null("Checkpoint") == null:
+			get_node("Checkpoint").connect("body_shape_entered", UI, "_on_Checkpoint_body_shape_entered")
 		if data.player.camera:
 			Camera.current = true
+		UI.get_node("VBoxContainer/LevelNum").text = data.level_name
 	else:
 		RenameLevelText = $"../Level Editor/Panel4/LineEdit2"
 
@@ -51,7 +67,6 @@ func _ready():
 #	pass
 func saveLevel():
 	position = Vector2(0,0)
-	descendants.clear()
 	descendants = get_children() + [UI]
 	for i in descendants:
 		i.owner = self
@@ -70,7 +85,8 @@ func _on_SaveButton_pressed():
 func _on_PlayButton_pressed():
 	UI.show()
 	saveLevel()
-#	ResourceSaver.save("res://current_scene.tscn", GlobalVariables.level)
+#	ResourceSaver.save("res://Levels/Level21.tscn", GlobalVariables.level)
+#	ResourceSaver.save("glitchedLevel.tscn", GlobalVariables.level)
 #	print(Player.get_signal_connection_list("iamred"))
 	get_tree().change_scene_to(GlobalVariables.level)
 	GlobalVariables.editor = false
@@ -80,6 +96,7 @@ func _on_PlayButton_pressed():
 func _on_ExportButton_pressed():
 #	export = true
 	saveLevel()
+	
 #	FD.popup()
 
 #func _on_FileDialog_confirmed():
@@ -90,10 +107,7 @@ func _on_ExportButton_pressed():
 
 
 func _on_CameraButton_toggled(button_pressed):
-	if button_pressed:
-		data.player.camera = true
-	else:
-		data.player.camera = false
+	data.player.camera = button_pressed
 
 
 func _on_RenameButton2_pressed():

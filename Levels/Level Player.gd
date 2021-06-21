@@ -1,40 +1,52 @@
 extends Node
 
 onready var level = $Level999
-onready var Player = level.get_node("Player")
-onready var Camera = Player.get_node("Camera2D")
+onready var Player = level.Player
+onready var Camera = level.Camera
 onready var editor = $"Level Editor"
-onready var LoadPanel = $"Level Editor/Panel3"
-onready var LoadLevelText = $"Level Editor/Panel3/LineEdit"
-onready var RenamePanel = $"Level Editor/Panel4"
-onready var RenameButton = $"Level Editor/Panel4/RenameButton2"
-onready var PlayButton = $"Level Editor/Panel2/PlayButton"
-onready var CameraButton = $"Level Editor/Panel2/CameraButton"
-onready var PlayerColorButton = $"Level Editor/Panel2/PlayerColorButton"
-onready var SaveButton = $"Level Editor/Panel2/SaveButton"
+onready var LeftPanel = editor.get_node("Panel")
+onready var RightPanel = editor.get_node("Panel2")
+onready var LoadPanel = editor.get_node("Panel3")
+onready var RenamePanel = editor.get_node("Panel4")
+onready var LoadLevelText = LoadPanel.get_node("LineEdit")
+onready var RenameButton = RenamePanel.get_node("RenameButton2")
+onready var PlayButton = RightPanel.get_node("PlayButton")
+onready var CameraButton = RightPanel.get_node("CameraButton")
+onready var PlayerColorButton = RightPanel.get_node("PlayerColorButton")
+onready var SaveButton = RightPanel.get_node("SaveButton")
 onready var colorButtons = get_tree().get_nodes_in_group("colorButton")
-onready var OrbAdder = $"Level Editor/Panel/OrbAdder"
-onready var HazardAdder = $"Level Editor/Panel/HazardAdder"
-onready var ExitAdder = $"Level Editor/Panel/ExitAdder"
-onready var RedButton = $"Level Editor/Panel/RedButton"
-onready var BlueButton = $"Level Editor/Panel/BlueButton"
-onready var GreenButton = $"Level Editor/Panel/GreenButton"
-onready var WhiteButton = $"Level Editor/Panel/WhiteButton"
-var current_selected : Object
-var click : bool
-var object : Object
+onready var OrbAdder = LeftPanel.get_node("OrbAdder")
+onready var HazardAdder = LeftPanel.get_node("HazardAdder")
+onready var ExitAdder = LeftPanel.get_node("ExitAdder")
+onready var CheckpointAdder = LeftPanel.get_node("CheckpointAdder")
+onready var RedButton = colorButtons[1]
+onready var BlueButton = colorButtons[0]
+onready var GreenButton = colorButtons[2]
+onready var WhiteButton = colorButtons[3]
+var current_selected : CollisionObject2D
 var color_pick : String
+var m : Vector2
+var ui : bool = false
 
 func add_object(obj : String):
 	current_selected = load("res://" + obj + ".tscn").instance()
-	level.add_child(current_selected)
+	if level.get_node_or_null(current_selected.name) == null:
+		level.add_child(current_selected)
+	else:
+		var i = 0
+		while not current_selected.is_inside_tree():
+			if level.get_node_or_null(current_selected.name + str(i)) == null:
+				current_selected.name += str(i)
+				level.add_child(current_selected)
+			else:
+				i += 1
 
 func loadLevel():
 	level.queue_free()
 	level = GlobalVariables.level.instance()
 	Player = level.get_node("Player")
 	Player.color = level.data.player.color
-	add_child(level)
+	add_child(level,true)
 	move_child(level, 0)
 	PlayButton.connect("pressed", level, "_on_PlayButton_pressed")
 	SaveButton.connect("pressed", level, "_on_SaveButton_pressed")
@@ -53,9 +65,12 @@ func _ready():
 		GlobalVariables.editor_playing = false
 	if not level.get_node_or_null("ExitSprite") == null:
 		ExitAdder.disabled = true
+	if not level.get_node_or_null("Checkpoint") == null:
+		CheckpointAdder.disabled = true
+	if not HH.get_sibling("ParallaxBackground", self) == null:
+		HH.get_sibling("ParallaxBackground", self).get_node("BG").texture = Player.BGs.grey
 	if not GlobalVariables.userdata.has("saved_levels"):
 		GlobalVariables.userdata.saved_levels = []
-	VisualServer.set_default_clear_color(Color(0.682,0.682,0.682,1.0))
 	displayButtons("white")
 	Camera.current = false
 
@@ -69,39 +84,46 @@ func _process(_delta):
 		OrbAdder.disabled = false
 		HazardAdder.disabled = false
 		PlayerColorButton.disabled = false
-	var m = level.get_local_mouse_position()
+	m = level.get_local_mouse_position()
 	if not LoadPanel.is_visible() and not RenamePanel.is_visible():
-		if Input.is_action_pressed("ui_left") and level.position.x > -480:
+		if Input.is_action_pressed("ui_left") and level.position.x < 480:
 			level.position.x += 8
-		if Input.is_action_pressed("ui_right") and level.position.x < 1248:
+		if Input.is_action_pressed("ui_right") and level.position.x > -480:
 			level.position.x -= 8
-		if not current_selected == null:
-			if Input.is_action_pressed("shift"):
-				current_selected.position = Vector2(stepify(m.x, 1),stepify(m.y, 1))
+		if ui == false:
+			if not current_selected == null:
+				if Input.is_action_pressed("shift"):
+					current_selected.position = Vector2(stepify(m.x, 1),stepify(m.y, 1))
+				else:
+					current_selected.position = Vector2(stepify(m.x, 8),stepify(m.y, 8))
+				if Player == current_selected:
+					level.data.player.position = Player.position
+				else:
+					level.data[current_selected.name] = current_selected.position
+				if Input.is_action_pressed("ui_cancel") and not current_selected == Player:
+					if current_selected.name == "ExitSprite":
+						ExitAdder.disabled = false
+					current_selected.queue_free()
+					level.data.erase(current_selected.name)
 			else:
-				current_selected.position = Vector2(stepify(m.x, 8),stepify(m.y, 8))
-			if Player == current_selected:
-				level.data.player.position = Player.position
-			else:
-				level.data[current_selected.name] = current_selected.position
-			if Input.is_action_pressed("ui_cancel") and not current_selected == Player:
-				if current_selected.name == "ExitSprite":
-					ExitAdder.disabled = false
-				current_selected.queue_free()
-				level.data.erase(current_selected.name)
-		else:
-			var x = level.get_children()
-			x.erase(level.get_node("CanvasLayer"))
-			for i in x:
-				if Player == i or "Tile" in i.name or "tile" in i.name or "Hazard" in i.name:
-					if m.x > i.position.x - 16 and m.y < i.position.y + 16 and m.y > i.position.y - 16 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
-						current_selected = i
-				elif "ExitSprite" == i.name:
-					if m.x > i.position.x - 16 and m.y < i.position.y + 32 and m.y > i.position.y - 32 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
-						current_selected = i
-				elif "ColorOrb" in i.name:
-					if m.x > i.position.x - 24 and m.y < i.position.y + 36 and m.y > i.position.y - 36 and m.x < i.position.x + 24 and Input.is_action_pressed("mousebutton"):
-						current_selected = i
+				var x = level.get_children()
+				x.erase(level.get_node("CanvasLayer"))
+				#print(editor.get_global_mouse_position())
+				#print(editor.get_global_mouse_position() > Vector2(0,0) == false and editor.get_global_mouse_position() < Vector2(160,450) == false)
+				#if editor.get_global_mouse_position() > Vector2(608,0) == false and editor.get_global_mouse_position() < Vector2(768,450) == false:
+				for i in x:
+					if Player == i or "Tile" in i.name or "tile" in i.name or "Hazard" in i.name:
+						if m.x > i.position.x - 16 and m.y < i.position.y + 16 and m.y > i.position.y - 16 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
+							current_selected = i
+					elif "ExitSprite" == i.name:
+						if m.x > i.position.x - 16 and m.y < i.position.y + 32 and m.y > i.position.y - 32 and m.x < i.position.x + 16 and Input.is_action_pressed("mousebutton"):
+							current_selected = i
+					elif "ColorOrb" in i.name:
+						if m.x > i.position.x - 24 and m.y < i.position.y + 36 and m.y > i.position.y - 36 and m.x < i.position.x + 24 and Input.is_action_pressed("mousebutton"):
+							current_selected = i
+					elif "Checkpoint" in i.name:
+						if m.x > i.position.x - 5.5 and m.y < i.position.y + 22 and m.y > i.position.y - 22 and m.x < i.position.x + 5.5 and Input.is_action_pressed("mousebutton"):
+							current_selected = i
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://Levels/Title screen.tscn")
@@ -124,6 +146,7 @@ func _on_Level_Editor_gui_input(event):
 	if not current_selected == null:
 		if event is InputEventMouseButton:
 			current_selected = null
+	
 
 func displayButtons(color : String):
 	#color = color.insert(0, color.left(0).capitalize())
@@ -191,7 +214,7 @@ func _on_LoadButton2_pressed():
 				if level.data.player.camera:
 					CameraButton.pressed = true
 				for i in level.data:
-					var j
+					var j : CollisionObject2D
 					var exists : bool = false
 					if "Tile" in i:
 						j = preload("res://Tilecostumes/Tile.tscn").instance()
@@ -226,7 +249,20 @@ func _on_LoadButton2_pressed():
 					elif "ExitSprite" in i:
 						j = preload("res://ExitSprite.tscn").instance()
 						exists = true
+					elif "Checkpoint" in i:
+						j = preload("res://Art/Checkpoint/Checkpoint.tscn").instance()
+						exists = true
 					if exists:
+						if level.get_node_or_null(j.name) == null:
+							level.add_child(j)
+						else:
+							var k = 0
+							while not j.is_inside_tree():
+								if level.get_node_or_null(j.name + str(k)) == null:
+									j.name += str(k)
+									level.add_child(j)
+								else:
+									k += 1
 						level.add_child(j)
 						level.data[i] = str2var("Vector2" + str(level.data.get(i)))
 						j.position = level.data[i]
@@ -238,7 +274,7 @@ func _on_LoadButton2_pressed():
 			printerr("Level not found!")
 	else:
 		printerr("No levels!")
-	$"Level Editor/Panel3".hide()
+	LoadPanel.hide()
 
 
 #func _on_ImportButton_pressed():
@@ -291,3 +327,16 @@ func _on_CancelButton_pressed():
 func _on_RenameButton_pressed():
 	level.RenameLevelText.text = level.data.level_name
 	RenamePanel.show()
+
+
+func _on_Panel_mouse_entered():
+	ui = true
+
+
+func _on_Panel_mouse_exited():
+	ui = false
+
+
+func _on_CheckpointAdder_pressed():
+	add_object("Art/Checkpoint/Checkpoint")
+	CheckpointAdder.disabled = true
