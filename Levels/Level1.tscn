@@ -4,7 +4,7 @@
 [ext_resource path="res://Tilecostumes/Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tilecostumes/Redtile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ExitSprite.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/Level1.gd" type="Script" id=5]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=5]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=6]
 
 [node name="Level1" type="Node2D"]
@@ -79,6 +79,7 @@ position = Vector2( 616, 255 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
+
 [connection signal="restart" from="Player" to="." method="_on_Player_restart"]
 [connection signal="body_entered" from="ExitSprite" to="Player" method="_on_ExitSprite_body_entered"]
 [connection signal="body_entered" from="ExitSprite" to="CanvasLayer/UI" method="_on_ExitSprite_body_entered"]

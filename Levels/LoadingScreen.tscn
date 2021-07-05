@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Fonts/UI_huge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Art/A Platformer Trial of Colors (New Thumbnail).png" type="Texture" id=2]
+
+[node name="LoadingScreen" type="TextureRect"]
+visible = false
+margin_left = -88.0
+margin_top = -32.0
+margin_right = 853.0
+margin_bottom = 508.0
+texture = ExtResource( 2 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 941.0
+margin_bottom = 540.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Loading..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

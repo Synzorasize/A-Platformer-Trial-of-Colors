@@ -1,8 +1,11 @@
-extends Node2D
+extends Level
 
 export (Dictionary) var data = {
 	"level_name": "CustomLevel",
 	"speedrun_time": null,
+	"teleporter_connections": {},
+	switch_init: [],
+	"switch_order": [],
 	"player": {
 		"color": "red",
 		"position": Vector2(384,192),
@@ -12,59 +15,47 @@ export (Dictionary) var data = {
 }
 #var level : PackedScene = PackedScene.new()
 #var level_names = []
-onready var Player = $Player
-onready var Camera = Player.get_node("Camera2D")
 onready var UI = $CanvasLayer/UI
+var level_player : Node
 var RenameLevelText : LineEdit
+var SetIDText : LineEdit
+# Teleporter control
+var currentTeleporterID : int
+var currentTeleporterName : String
+
 var descendants = []
 #var export : bool = false
-#onready var FD = $"../FileDialog"
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-#func iterate_names():
-#	level_names.clear()
-#	if not GlobalVariables.userdata.saved_levels.empty():
-#		for i in GlobalVariables.userdata.saved_levels:
-#			level_names.append(GlobalVariables.userdata.saved_levels[i["name"]])
 
 func restart():
 	get_tree().change_scene_to(GlobalVariables.level.duplicate())
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
-	GlobalVariables.LevelNum = 999
-	JavaScript.eval("""function download(filename, text) {
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
+	level_player = get_parent()
+	#JavaScript.eval("""function download(filename, text) {
+ # var element = document.createElement('a');
+ # element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+#  element.setAttribute('download', filename);
 
-  element.style.display = 'none';
-  document.body.appendChild(element);
+#  element.style.display = 'none';
+ # document.body.appendChild(element);
 
-  element.click();
+ # element.click();
 
-  document.body.removeChild(element);
-}""")
+ # document.body.removeChild(element);
+#}""", true)
 func _ready():
 	name = "Level999"
-	Camera.current = false
 	if GlobalVariables.editor_playing and not GlobalVariables.editor:
-		Player.color = data.player.color
 		if not get_node_or_null("ExitSprite") == null:
 			get_node("ExitSprite").connect("body_entered", Player, "_on_ExitSprite_body_entered")
 			get_node("ExitSprite").connect("body_entered", UI, "_on_ExitSprite_body_entered")
-		if not get_node_or_null("Checkpoint") == null:
-			get_node("Checkpoint").connect("body_shape_entered", UI, "_on_Checkpoint_body_shape_entered")
-		if data.player.camera:
-			Camera.current = true
-		UI.get_node("VBoxContainer/LevelNum").text = data.level_name
+		UI.lvlNum.text = data.level_name
 	else:
 		RenameLevelText = $"../Level Editor/Panel4/LineEdit2"
+		SetIDText = $"../Level Editor/Panel5/LineEdit3"
+		Camera.current = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 func saveLevel():
 	position = Vector2(0,0)
 	descendants = get_children() + [UI]
@@ -75,7 +66,6 @@ func saveLevel():
 
 func _on_SaveButton_pressed():
 	for i in GlobalVariables.userdata.saved_levels:
-		#print(data.level_name)
 		if i.level_name == data.level_name:
 			GlobalVariables.userdata.saved_levels.erase(i)
 			break
@@ -87,7 +77,6 @@ func _on_PlayButton_pressed():
 	saveLevel()
 #	ResourceSaver.save("res://Levels/Level21.tscn", GlobalVariables.level)
 #	ResourceSaver.save("glitchedLevel.tscn", GlobalVariables.level)
-#	print(Player.get_signal_connection_list("iamred"))
 	get_tree().change_scene_to(GlobalVariables.level)
 	GlobalVariables.editor = false
 	GlobalVariables.editor_playing = true
@@ -96,7 +85,7 @@ func _on_PlayButton_pressed():
 func _on_ExportButton_pressed():
 #	export = true
 	saveLevel()
-	
+	#JavaScript.eval("""download("APTC")""")
 #	FD.popup()
 
 #func _on_FileDialog_confirmed():
@@ -108,9 +97,27 @@ func _on_ExportButton_pressed():
 
 func _on_CameraButton_toggled(button_pressed):
 	data.player.camera = button_pressed
-
+	Player.camera_on = button_pressed
 
 func _on_RenameButton2_pressed():
-	#print(GlobalVariables.userdata.saved_levels[0].level_name)
 	data.level_name = RenameLevelText.text
-	get_parent().RenamePanel.hide()
+	level_player.RenamePanel.hide()
+
+
+func _on_SetIDButton_pressed():
+	var d = int(SetIDText.text)
+	if level_player.teleporterIDs.has(d):
+		for i in data:
+			if "Teleporter" in i:
+				if d == data[i].id:
+					if not d == currentTeleporterID:
+						data.teleporter_connections[currentTeleporterName] = i
+						get_node(currentTeleporterName).connectedTeleporterName = i
+						break
+					else:
+						printerr("Teleporters can't connect to themselves.")
+	else:
+		printerr("No teleporter exists with that id.")
+	level_player.SetIDPanel.hide()
+	for j in get_tree().get_nodes_in_group("idLabel"):
+		j.hide()

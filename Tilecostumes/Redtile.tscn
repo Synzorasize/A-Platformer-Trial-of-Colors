@@ -2,12 +2,13 @@
 
 [ext_resource path="res://Tilecostumes/Hitbox.tres" type="Shape2D" id=1]
 [ext_resource path="res://Playercostume/Redplayer.png" type="Texture" id=2]
-[ext_resource path="res://Tilecostumes/Redtile.gd" type="Script" id=3]
+[ext_resource path="res://Tilecostumes/Tile.gd" type="Script" id=3]
 
 [node name="Redtile" type="StaticBody2D" groups=[
 "coloredItems",
 ]]
 script = ExtResource( 3 )
+color = "red"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource( 1 )

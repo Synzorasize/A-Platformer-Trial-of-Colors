@@ -1,7 +1,5 @@
-extends Node2D
+extends Level
 
-onready var Player = $Player
-onready var Camera = $Player/Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():

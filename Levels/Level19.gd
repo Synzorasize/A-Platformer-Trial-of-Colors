@@ -1,7 +1,4 @@
-extends Node2D
-
-onready var Player = $Player
-onready var Camera = $Player/Camera2D
+extends Level
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
@@ -11,9 +8,9 @@ func _enter_tree():
 	#	GlobalVariables.restart = true
 func _ready():
 	Player.color = "blue"
-	GlobalVariables.disable("switch1", self)
-	GlobalVariables.disable("switch2", self)
-	GlobalVariables.disable("switch3", self)
+	disable("switch1")
+	disable("switch2")
+	disable("switch3")
 	Camera.current = true
 	Camera.limit_top = -GlobalVariables.screensize.y / 4
 	Camera.limit_bottom = GlobalVariables.screensize.y
@@ -25,50 +22,50 @@ func _ready():
 
 func _on_Switch_switchon():
 	Player.color = "red"
-	GlobalVariables.replace_switch("switchswitch", "Red", self, "0")
-	GlobalVariables.replace("switch0", "Tilecostumes/Bluetile", self, true)
+	replace_switch("switchswitch", "Red")
+	replace("switch0", "Tilecostumes/Bluetile")
 
 func _on_Switch0_switchon():
 	Player.color = "green"
-	GlobalVariables.replace_switch("switchswitch", "Green", self, "1")
-	GlobalVariables.replace("switch0", "Tilecostumes/Redtile", self, true)
+	replace_switch("switchswitch", "Green")
+	replace("switch0", "Tilecostumes/Redtile")
 
 func _on_Switch1_switchon():
 	Player.color = "blue"
-	GlobalVariables.replace_switch("switchswitch", "Blue", self, "")
-	GlobalVariables.replace("switch0", "Tilecostumes/Greentile", self, true)
+	replace_switch("switchswitch", "Blue")
+	replace("switch0", "Tilecostumes/Greentile")
 
 
 func _on_Switch2_switchon():
-	GlobalVariables.enable("switch1", self)
+	enable("switch1")
 
 
 func _on_Switch2_switchoff():
-	GlobalVariables.disable("switch1", self)
+	disable("switch1")
 
 
 func _on_Switch3_switchon():
-	GlobalVariables.replace_switch("selfswitch", "Blue", self, "4")
+	replace_switch("selfswitch", "Blue")
 	Player.color = "blue"
-	GlobalVariables.enable("switch2", self)
+	enable("switch2")
 
 
 func _on_Switch4_switchon():
-	GlobalVariables.replace_switch("selfswitch", "Red", self, "3")
+	replace_switch("selfswitch", "Red")
 	Player.color = "red"
 
 
 func _on_Switch5_switchoff():
-	GlobalVariables.disable("switch3", self)
+	disable("switch3")
 
 
 func _on_Switch5_switchon():
-	GlobalVariables.enable("switch3", self)
+	enable("switch3")
 
 
 func _on_Switch6_switchon():
-	GlobalVariables.disable("switch", self)
+	disable("switch")
 
 
 func _on_Switch6_switchoff():
-	GlobalVariables.enable("switch", self)
+	enable("switch")

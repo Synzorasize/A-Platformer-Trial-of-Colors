@@ -1,18 +1,5 @@
-extends Node2D
+extends Level
 
-onready var Player = $Player
-
-# Called when the node enters the scene tree for the first time.
-func _enter_tree():
-	GlobalVariables.LevelNum = 14
-	#if GlobalVariables.restart == false:
-	#	get_tree().reload_current_scene()
-	#	GlobalVariables.restart = true
-func _ready():
-	Player.color = "green"
-	GlobalVariables.disable("switch2", self)
-	GlobalVariables.disable("switch4", self)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Player.color == "red":
 		GlobalVariables.enable("switch4", self)

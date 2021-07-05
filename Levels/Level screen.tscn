@@ -39,9 +39,9 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 104.0
-margin_top = 160.0
+margin_top = 129.0
 margin_right = -96.0
-margin_bottom = -69.9999
+margin_bottom = -70.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 columns = 5
@@ -89,5 +89,6 @@ custom_styles/disabled = ExtResource( 5 )
 custom_styles/normal = ExtResource( 6 )
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
+
 [connection signal="pressed" from="GridContainer/Level1" to="." method="_on_LevelButton_pressed"]
 [connection signal="pressed" from="HBoxContainer2/BackButton" to="." method="_on_BackButton_pressed"]

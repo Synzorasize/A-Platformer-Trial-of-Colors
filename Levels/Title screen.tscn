@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Art/Fonts/UI.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/Fonts/UI_25.tres" type="DynamicFont" id=2]
@@ -7,9 +7,10 @@
 [ext_resource path="res://Art/Buttons/ButtonHover_Pressed.tres" type="StyleBox" id=5]
 [ext_resource path="res://Art/Buttons/ButtonNormal.tres" type="StyleBox" id=6]
 [ext_resource path="res://Art/UI/PanelBG.tres" type="StyleBox" id=7]
-[ext_resource path="res://Art/A Platformer Trial of Colors Thumbnail.png" type="Texture" id=8]
+[ext_resource path="res://Art/A Platformer Trial of Colors (New Thumbnail).png" type="Texture" id=8]
 [ext_resource path="res://Gabriola.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Art/Fonts/UI_20.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Art/Buttons/Next.tres" type="ShortCut" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -29,8 +30,11 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
 anchor_right = 1.0
-anchor_bottom = 0.996
-margin_bottom = 1.79999
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -32.0
+margin_right = 90.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 8 )
@@ -192,7 +196,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.776471, 0.776471, 0.776471, 1 )
 text = "Copyright of Synzorasize."
 align = 1
 valign = 1
@@ -443,7 +447,6 @@ __meta__ = {
 }
 
 [node name="PreviousStats" type="Button" parent="Panel2"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -463,7 +466,6 @@ __meta__ = {
 }
 
 [node name="Panel3" type="Panel" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 256.0
@@ -495,12 +497,12 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
-margin_top = 56.0
+margin_top = 40.0
 margin_right = -32.0
-margin_bottom = -28.0
+margin_bottom = -11.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_constants/separation = 0
+custom_constants/separation = -20
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -524,9 +526,9 @@ __meta__ = {
 }
 
 [node name="CheckButtonBGcolorsOff" type="CheckBox" parent="Panel3/VSplitContainer"]
-margin_top = 54.0
+margin_top = 34.0
 margin_right = 24.0
-margin_bottom = 108.0
+margin_bottom = 88.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
@@ -544,9 +546,9 @@ __meta__ = {
 }
 
 [node name="CheckButtonButtonColorsOff" type="CheckBox" parent="Panel3/VSplitContainer"]
-margin_top = 108.0
+margin_top = 68.0
 margin_right = 24.0
-margin_bottom = 162.0
+margin_bottom = 122.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
@@ -563,9 +565,9 @@ __meta__ = {
 }
 
 [node name="CheckButtonMuteSound" type="CheckBox" parent="Panel3/VSplitContainer"]
-margin_top = 162.0
+margin_top = 102.0
 margin_right = 24.0
-margin_bottom = 216.0
+margin_bottom = 156.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -579,6 +581,50 @@ margin_right = 192.0
 margin_bottom = 39.0
 custom_fonts/font = ExtResource( 10 )
 text = "Mute sound"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonDelayDeathOff" type="CheckBox" parent="Panel3/VSplitContainer"]
+margin_top = 136.0
+margin_right = 24.0
+margin_bottom = 190.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DelayDeathOff" type="Label" parent="Panel3/VSplitContainer/CheckButtonDelayDeathOff"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 10 )
+text = "Don't delay death"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonCoordinateLabelOff" type="CheckBox" parent="Panel3/VSplitContainer"]
+margin_top = 170.0
+margin_right = 24.0
+margin_bottom = 224.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoordinateLabelOff" type="Label" parent="Panel3/VSplitContainer/CheckButtonCoordinateLabelOff"]
+margin_left = 24.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 10 )
+text = "Turn off coordinate label"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -605,12 +651,11 @@ __meta__ = {
 }
 
 [node name="Panel4" type="Panel" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 192.0
+margin_left = 167.0
 margin_top = 72.0
-margin_right = -192.0
+margin_right = -167.0
 margin_bottom = -78.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -647,14 +692,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel4/VSplitContainer"]
-margin_right = 352.0
+[node name="LevelRow1" type="HBoxContainer" parent="Panel4/VSplitContainer" groups=[
+"rows",
+]]
+margin_right = 402.0
 margin_bottom = 31.0
 
-[node name="DeleteButton" type="Button" parent="Panel4/VSplitContainer/HBoxContainer"]
-margin_right = 60.0
+[node name="DeleteButton" type="Button" parent="Panel4/VSplitContainer/LevelRow1"]
+margin_right = 58.0
 margin_bottom = 28.0
-rect_min_size = Vector2( 60, 28 )
+rect_min_size = Vector2( 58, 28 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/hover = ExtResource( 5 )
@@ -667,11 +714,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="Panel4/VSplitContainer/HBoxContainer"]
-margin_left = 64.0
-margin_right = 124.0
+[node name="EditButton" type="Button" parent="Panel4/VSplitContainer/LevelRow1"]
+margin_left = 62.0
+margin_right = 112.0
 margin_bottom = 28.0
-rect_min_size = Vector2( 60, 28 )
+rect_min_size = Vector2( 50, 28 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/hover = ExtResource( 5 )
@@ -679,14 +726,31 @@ custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = ExtResource( 6 )
 custom_fonts/font = ExtResource( 10 )
-text = "Play"
+text = "Edit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel4/VSplitContainer/HBoxContainer"]
-margin_left = 128.0
-margin_right = 347.0
+[node name="CopyButton" type="Button" parent="Panel4/VSplitContainer/LevelRow1"]
+margin_left = 116.0
+margin_right = 166.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 50, 28 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
+text = "Copy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel4/VSplitContainer/LevelRow1"]
+margin_left = 170.0
+margin_right = 389.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 219, 0 )
 custom_fonts/font = ExtResource( 2 )
@@ -696,10 +760,10 @@ clip_text = true
 [node name="CloseButton" type="Button" parent="Panel4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 152.0
-margin_top = 258.0
-margin_right = -152.0
-margin_bottom = -11.0
+margin_left = 225.0
+margin_top = 260.0
+margin_right = -79.0
+margin_bottom = -9.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -712,6 +776,221 @@ text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ImportButton" type="Button" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 75.0
+margin_top = 260.0
+margin_right = -229.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Paste/Import"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 365.0
+margin_top = 260.0
+margin_right = -9.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Previous" type="Button" parent="Panel4"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 260.0
+margin_right = -365.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Prev."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmPanel" type="Panel" parent="Panel4"]
+visible = false
+margin_left = 48.0
+margin_top = 56.0
+margin_right = 336.0
+margin_bottom = 264.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel4/ConfirmPanel"]
+margin_right = 288.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 219, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Are you sure you want to delete this level?"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Button" parent="Panel4/ConfirmPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 152.0
+margin_right = -176.0
+margin_bottom = -10.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Yes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="Button" parent="Panel4/ConfirmPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 176.0
+margin_top = 152.0
+margin_right = -16.0
+margin_bottom = -10.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CopyPanel" type="Panel" parent="Panel4"]
+visible = false
+margin_left = 73.0
+margin_top = 24.0
+margin_right = 353.0
+margin_bottom = 264.0
+custom_styles/panel = ExtResource( 7 )
+
+[node name="LineEdit" type="TextEdit" parent="Panel4/CopyPanel"]
+margin_right = 280.0
+margin_bottom = 200.0
+custom_styles/read_only = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/selection_color = Color( 0.290196, 0.847059, 0.905882, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
+readonly = true
+override_selected_font_color = true
+wrap_enabled = true
+
+[node name="CloseButton" type="Button" parent="Panel4/CopyPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 114.0
+margin_top = 200.0
+margin_right = -106.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PastePanel" type="Panel" parent="Panel4"]
+visible = false
+margin_left = 73.0
+margin_top = 24.0
+margin_right = 353.0
+margin_bottom = 264.0
+custom_styles/panel = ExtResource( 7 )
+
+[node name="LineEdit" type="TextEdit" parent="Panel4/PastePanel"]
+margin_right = 280.0
+margin_bottom = 200.0
+custom_styles/read_only = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/selection_color = Color( 0.290196, 0.847059, 0.905882, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
+override_selected_font_color = true
+wrap_enabled = true
+
+[node name="EnterButton" type="Button" parent="Panel4/PastePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 114.0
+margin_top = 200.0
+margin_right = -106.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
+shortcut = ExtResource( 11 )
+text = "Enter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="VSplitContainer/StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="VSplitContainer/Instructions" to="." method="_on_Instructions_pressed"]
 [connection signal="pressed" from="VSplitContainer/SpeedrunMode" to="." method="_on_SpeedrunMode_pressed"]
@@ -729,5 +1008,13 @@ __meta__ = {
 [connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonBGcolorsOff" to="." method="_on_CheckButtonBGcolorsOff_toggled"]
 [connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonButtonColorsOff" to="." method="_on_CheckButtonButtonColorsOff_toggled"]
 [connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonMuteSound" to="." method="_on_CheckButtonMuteSound_toggled"]
+[connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonDelayDeathOff" to="." method="_on_CheckButtonDelayDeathOff_toggled"]
+[connection signal="toggled" from="Panel3/VSplitContainer/CheckButtonCoordinateLabelOff" to="." method="_on_CheckButtonCoordinateLabelOff_toggled"]
 [connection signal="pressed" from="Panel3/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="Panel4/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Panel4/ImportButton" to="." method="_on_ImportButton_pressed"]
+[connection signal="pressed" from="Panel4/Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Panel4/Previous" to="." method="_on_Previous_pressed"]
+[connection signal="pressed" from="Panel4/ConfirmPanel/No" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Panel4/CopyPanel/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Panel4/PastePanel/EnterButton" to="." method="_on_EnterButton_pressed"]
