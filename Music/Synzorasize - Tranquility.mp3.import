@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Synzorasize - Tranquility.mp3-574d19e18fa2237fff373f00e3e37214.mp3str"
+
+[deps]
+
+source_file="res://Music/Synzorasize - Tranquility.mp3"
+dest_files=[ "res://.import/Synzorasize - Tranquility.mp3-574d19e18fa2237fff373f00e3e37214.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

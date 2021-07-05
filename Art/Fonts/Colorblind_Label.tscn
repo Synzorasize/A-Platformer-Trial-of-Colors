@@ -5,6 +5,9 @@
 [node name="Colorblind_Label" type="Label" groups=[
 "colorblind",
 ]]
+margin_left = -16.0
+margin_right = -16.0
+margin_bottom = 21.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
